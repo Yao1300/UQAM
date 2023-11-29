@@ -12,45 +12,37 @@ A level-1 auxiliary file: Aspects_algorithimiques.aux
 A level-1 auxiliary file: Conclusion_et_perspectives.aux
 The style file: apalike-uqam.bst
 Database file #1: Bibi.bib
-I was expecting a `,' or a `}'---line 301 of file Bibi.bib
- : 
- : Url = {https://github.com/Yao1300/UQAM/tree/main/Annexe},
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 308 of file Bibi.bib
- : 
- : Url = {https://github.com/Yao1300/UQAM/tree/main/code_memoire2},
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
 Warning--empty year in Oeis2
 Warning--there is url but no urldate in Oeis2
 Warning--empty year in Oeis
 Warning--there is url but no urldate in Oeis
 Warning--there's a number but no series in Auto1
+Warning--there is url but no urldate in Annexe
+Warning--there is url but no urldate in Code
 You've used 28 entries,
             2552 wiz_defined-function locations,
-            781 strings with 7825 characters,
-and the built_in function-call counts, 11219 in all, are:
-= -- 1110
+            783 strings with 7928 characters,
+and the built_in function-call counts, 11253 in all, are:
+= -- 1114
 > -- 286
 < -- 27
 + -- 98
 - -- 92
-* -- 879
-:= -- 1814
+* -- 887
+:= -- 1818
 add.period$ -- 91
 call.type$ -- 28
 change.case$ -- 181
 chr.to.int$ -- 26
-cite$ -- 33
+cite$ -- 35
 duplicate$ -- 513
-empty$ -- 1029
+empty$ -- 1031
 format.name$ -- 140
-if$ -- 2336
+if$ -- 2342
 int.to.chr$ -- 3
 int.to.str$ -- 0
 missing$ -- 34
-newline$ -- 145
+newline$ -- 147
 num.names$ -- 84
 pop$ -- 225
 preamble$ -- 1
@@ -64,8 +56,8 @@ text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 156
-warning$ -- 5
+warning$ -- 7
 while$ -- 93
 width$ -- 0
-write$ -- 366
-(There were 2 error messages)
+write$ -- 370
+(There were 7 warnings)

@@ -829,12 +829,12 @@ Pour le cas $n=1$, nous représentons, ci-dessous, les $32$ figures correspondan
 \end{figure}  
 \newpage
 
-Les éléments de la figure \ref{uniF3} d'une part et ceux de \ref{S1}, \ref{S3}, \ref{S5}, \ref{S7}, \ref{S11}, \ref{S16} et \ref{S20} d'autre part confirment que les termes $S_{0}$ et $S_{1}$ de la suite $(S_{n})$ sont respectivement $2$ et $32$. Pour l'instant il n'y a aucune suite de l'\emph{OEIS} commençant par les termes $2$, $32$, $2644$, pour confirmer l'intégralité de la suite $(S_{n})$.
+Les éléments de la figure \ref{uniF3} d'une part et ceux de \ref{S1}, \ref{S3}, \ref{S5}, \ref{S7}, \ref{S11}, \ref{S16} et \ref{S20} d'autre part confirment que les termes $S_{0}$ et $S_{1}$ de la suite $(S_{n})$ sont respectivement $2$ et $32$. Pour l'instant il n'y a aucune suite de l'\emph{OEIS} commençant par les termes $2$, $32$, $2644$, pour confirmer l'intégralité de la suite $(S_{n})$  néanmoins la section suivante nous donne les moyens de valider la matrice $\mathcal{M}_{F3}$.
 
 \section{Séries génératrices de l'automate $\mathcal{A}_{F3}$}
 Tout comme dans la dernière  section du chapitre précédent  nous validons la matrice $\mathcal{M}_{F3}$ en déterminant sa fonction rationnelle. Le développement de cette dernière en série de Taylor nous permet de découvrir beaucoup de termes de la suite $(S_{n})$.
 
-En notant par $s_{i}(x)$ la fonction génératrice des polyominos partant de l'état initial $e_{i}$, $i\in \{1, 3, 5, 7, 11, 16, 20\}$, à un état final de l'automate $\mathcal{A}_{F3}$ nous avons
+En notant par $s_{i}(x)$ la fonction génératrice des forêts de polyominos partant de l'état initial $e_{i}$, $i\in \{1, 3, 5, 7, 11, 16, 20\}$, à un état final de l'automate $\mathcal{A}_{F3}$ nous avons
 \begin{eqnarray*}
 s_1(x)& = & \dfrac{2x(-4x^{2} + 7x - 2)}{(64x^{3} - 56x^{2} + 14x - 1)}\\
 & &\\
@@ -867,11 +867,11 @@ dont la série de Taylor à l'ordre $20$ au voisinage de $0$ est
 
 
 
- Mais néanmoins l'exactitude de la matrice $\mathcal{M}_{F3}$ générée grâce à notre programme $C++$, la fonction rationnelle $F_{F3}$ ainsi que la série de Taylor associée  et surtout grâce à plusieurs outils de calculs implémentés au cours de ce travail, nous garantissons l'exactitude de la suite $(S_{n})$. De plus nous prévoyons une soumission de cette suite à l'\emph{OEIS} pour une étude minutieuse afin quelle soit rendue publique.
+Grâce à l'exactitude de la matrice $\mathcal{M}_{F3}$, la fonction rationnelle $F_{F3}$ ainsi que la série de Taylor associée  et surtout grâce à plusieurs outils de calculs implémentés au cours de ce travail, nous garantissons l'exactitude de la suite $(S_{n})$. De plus nous prévoyons une soumission de cette suite à l'\emph{OEIS} pour une étude minutieuse afin qu'elle soit rendue publique.
 
  
  
- L'automate $\mathcal{A}_{FB}$ tout comme l'automate $\mathcal{A}_{B}$ présentent un intérêt particulier dans l'énumération des polyominos et forêts de polyominos inscrits dans les rectangles du type $B$. En considérant le sous-ensemble des forêts de polyominos inscrits à une seule composante connexe, nous retrouvons les résultats dans le cas de l’automate $\mathcal{A}_{B}$. Nous concluons en disant  que $\mathcal{A}_{FB}$  généralise $\mathcal{A}_{B}.$ Comme cela a été le cas dans le chapitre précédent, la proposition \ref{inscr1} joue un rôle capital sur  l'inscriptibilité de toute forêt de polyminos partant d'un état initial à un état final et dont les transitions satisfont  aux règles associées à cette proposition.
+ L'automate $\mathcal{A}_{FB}$ tout comme l'automate $\mathcal{A}_{B}$ présentent un intérêt particulier dans l'énumération des polyominos et forêts de polyominos inscrits dans les rectangles du type $B$. En considérant le sous-ensemble des forêts de polyominos inscrites à une seule composante connexe, nous retrouvons les résultats dans le cas de l’automate $\mathcal{A}_{B}$. Nous concluons en disant  que $\mathcal{A}_{FB}$  généralise $\mathcal{A}_{B}.$ Comme cela a été le cas dans le chapitre précédent, la proposition \ref{inscr1} joue un rôle capital sur  l'inscriptibilité de toute forêt de polyminos partant d'un état initial à un état final et dont les transitions satisfont  aux règles associées à cette proposition.
  
  
- Le volet abordé dans ce chapitre est  une généralisation du chapitre précédent. Nous avons donné les règles de construction de l'automate $\mathcal{A}_{FB}$ nécessaire pour l'énumération de toutes les forêts de polyominos inscrites dans tous les rectangles de largeur $B$ et de hauteur quelconque en fonction de leur aire, leur périmètre, leur hauteur, leur nombre de feuilles et leur nombre de composantes connexes.
+ Le volet abordé dans ce chapitre est  une généralisation du chapitre précédent. Nous avons donné les règles de construction de l'automate $\mathcal{A}_{FB}$ nécessaire pour l'énumération de toutes les forêts de polyominos inscrites dans tous les rectangles de largeur $B$ et de hauteur quelconque en fonction de leur aire, leur périmètre, leur hauteur, leur nombre de feuilles et leur nombre de composantes connexes. Nous avons calculé la fonction génératrice associée à l'automate des forêts de polyominos inscrites dans un rectangle de largeur $3$ et de hauteur quelconque.

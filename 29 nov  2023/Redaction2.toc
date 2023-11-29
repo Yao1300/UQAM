@@ -49,9 +49,9 @@
 \vspace {1.5ex}
 \contentsline {section}{\numberline {2.5}Séries génératrices}{82}%
 \vspace {1.5ex}
-\contentsline {subsection}{\numberline {2.5.1}Série génératrice des polyominos inscrits dans un rectangle du type $2$}{82}%
+\contentsline {subsection}{\numberline {2.5.1}Série génératrice des polyominos inscrits dans un rectangle de type $2$}{82}%
 \vspace {1.5ex}
-\contentsline {subsection}{\numberline {2.5.2}Série génératrice des polyominos inscrits dans un rectangle du type $3$}{84}%
+\contentsline {subsection}{\numberline {2.5.2}Série génératrice des polyominos inscrits dans un rectangle de type $3$}{84}%
 \vspace {1.5ex}
 \contentsline {chapter}{\MakeUppercase {Chapitre\hskip 0.5em III} \hskip 0.5em \MakeUppercase {Automate décrivant les forêts de polyominos inscrites dans un rectangle}}{86}%
 \vspace {1.5ex}

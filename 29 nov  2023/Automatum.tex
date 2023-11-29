@@ -685,12 +685,12 @@ N_{5} & = &  1\times 15 + 2\times 15 + 5= 50
 \end{eqnarray*}
 \end{itemize}
 \end{Ex}
-Sur la base des formules établies dans cette section, nous écrivons un programme qui calcule le nombre d'états fondamentaux pour $B$ quelconques. Nous listons ainsi la suite $\mathcal{N}_{B}$ des nombres d'états fondamentaux  pour  $1\leq B\leq 15$:
+Sur la base des formules établies dans cette section, nous écrivons un programme qui calcule le nombre d'états fondamentaux pour $B$ quelconques. Nous listons ainsi la suite $(\mathcal{N}_{B})$ de nombres d'états fondamentaux  pour  $1\leq B\leq 15$:
 
 $1$, $4$, $12$, $32$, $82$, $208$, $7$, $530$, $1364$, $3551$, $9348$
  $24858$, $66692$, $179902$, $484128$, $1285405$.
 
-Les termes $\mathcal{N}_{1}$, $\mathcal{N}_{2}$, $\mathcal{N}_{3}$, $\mathcal{N}_{4}$, $\mathcal{N}_{5}$, $\mathcal{N}_{6}$  de cette suite sont respectivement égaux aux termes $a_{4}$, $a_{5}$, $a_{6}$, $a_{7}$, $a_{8}$ et $a_{9}$ de la suite, $a_{B}$, numéro $A135248$ de \emph{OEIS}. C'est-à-dire $\mathcal{N}_{B}=a_{B+3}$ pour $1\leq B\leq 6$. Mais à partir de $B=7$ nous n'avons plus l'égalité $\mathcal{N}_{B}=a_{B+3}$. 
+Les termes $\mathcal{N}_{1}$, $\mathcal{N}_{2}$, $\mathcal{N}_{3}$, $\mathcal{N}_{4}$, $\mathcal{N}_{5}$, $\mathcal{N}_{6}$  de cette suite sont respectivement égaux aux termes $a_{4}$, $a_{5}$, $a_{6}$, $a_{7}$, $a_{8}$ et $a_{9}$ de la suite, $(a_{B})$, numéro $A135248$ de \emph{OEIS}. C'est-à-dire $\mathcal{N}_{B}=a_{B+3}$ pour $1\leq B\leq 6$. Mais à partir de $B=7$ nous n'avons plus l'égalité $\mathcal{N}_{B}=a_{B+3}$. 
 \begin{spacing}{0.30}
 \subsection{L'alphabet et les transitions d'états}
 \end{spacing}
@@ -2591,10 +2591,12 @@ Il suffit, dans ce cas, de faire la somme $S_{1}$ des coefficients des polynôme
  \hline
 \end{tabular}
 \mbox{ }\\
+
 $S_{1}=1+1+1+2=5$. Ce qui signifie qu'on a au total $5$ polyominos inscrits dans le carré $2\times 2$.
 \item[(iii)] Cas $n=2$
 
- Nous faisons la  somme $S_{2}$ des coefficients des polynômes de Laurent des entrées $m_{i,j}$ de la matrice $\mathcal{M}_{2}^{2}$  correspondantes aux transitions des états initiaux aux états finaux.
+ Nous faisons la  somme $S_{2}$ des coefficients des polynômes de Laurent des entrées $m_{i,j}$ de la matrice $\mathcal{M}_{2}^{2}$  correspondantes aux transitions des états initiaux aux états finaux.\\\mbox{}
+ 
  
  \begin{tabular}{|c|c|c|c|}
  \hline
@@ -2700,7 +2702,7 @@ $15$& $470831$&$470831$& $665857$&$1607519$\\
 \begin{spacing}{0.30}
 \subsection{Validation des valeurs de la matrice $\mathcal{M}_{3}$}
 \end{spacing}
-Tout comme la section précédente, nous calculons, en utilisant les puissances de la matrice $\mathcal{M}_{3}$, les sept premières valeurs de la suite des nombres de polyominos inscrits dans un rectangle du type $3$ tout en les comparant à celles de l'\emph{OEIS}. On rappelle que  l'automate $\mathcal{A}_{3 }$ a pour   états  initiaux les états $e_{1}, e_{3}, e_{5}, e_{7}, e_{11}, e_{16}, e_{20}$ et pour états finaux les états $e_{15},  e_{21}, e_{22}, e_{23}, e_{24}, e_{25}$, $ e_{26}, e_{27}, e_{33}, e_{34},  e_{35},  e_{37}. $
+Tout comme la section précédente, nous calculons, en utilisant les puissances de la matrice $\mathcal{M}_{3}$, les sept premières valeurs de la suite des nombres de polyominos inscrits dans un rectangle de type $3$ tout en les comparant à celles de l'\emph{OEIS}. On rappelle que  l'automate $\mathcal{A}_{3 }$ a pour   états  initiaux les états $e_{1}, e_{3}, e_{5}, e_{7}, e_{11}, e_{16}, e_{20}$ et pour états finaux les états $e_{15},  e_{21}, e_{22}, e_{23}, e_{24}, e_{25}$, $ e_{26}, e_{27}, e_{33}, e_{34},  e_{35},  e_{37}. $
 
 Pour chaque état initial $e_{i}$ de $\mathcal{A}_{3}$, nous calculons la somme $s_{i}$ des coefficients de toutes les entrées $m_{i,j}$ de la matrice $\mathcal{M}_{3}^{n}$, correspondantes aux suites de transitions de $e_{i}$ à $e_{j}$, $j\in \{15, 21, 22, 23, 24, 25, 26, 27, 33, 34, 35, 37\}$. On désigne par  $S_{n}$ la somme des $s_{i}$, $i$ parcourant l'ensemble des indices des états initiaux de $\mathcal{A}_{3}$.
 \begin{itemize}
@@ -2882,9 +2884,9 @@ $11$&35139171
 Les valeurs obtenues à l'issue des calculs correspondent exactement aux onze premières valeurs de la suite numéro $A034184$  de l'\emph{OEIS}.
 
 \section{Séries génératrices}
-L'énumération des polyominos ou forêts de polyominos inscrits dans rectangle du type $B$, $B\geq 2$, est beaucoup plus aisée dès qu'on connaît la série génératrice $F_{B}$ liée à leur automate.  Pour ce faire, nous allons considérer la matrice $\mathfrak{M}_{B}$ dont chaque entrée correspond à la somme des coefficients des polynômes de Laurent $m_{i,j}$ de la matrice $\mathcal{M}_{B}$. Nous calculons ensuite la matrice $\mathit{M}_{B}=(I_{n}-x\mathfrak{M}_{B})^{-1}$. Nous sommons ensuite les entrées correspondantes aux passages des états initiaux aux état finaux.
+L'énumération des polyominos ou forêts de polyominos inscrits dans rectangle de type $B$, $B\geq 2$, est beaucoup plus aisée dès qu'on connaît la série génératrice $F_{B}$ liée à leur automate.  Pour ce faire, nous allons considérer la matrice $\mathfrak{M}_{B}$ dont chaque entrée correspond à la somme des coefficients des polynômes de Laurent $m_{i,j}$ de la matrice $\mathcal{M}_{B}$. Nous calculons ensuite la matrice $\mathit{M}_{B}=(I_{n}-x\mathfrak{M}_{B})^{-1}$. Nous sommons les entrées de $\mathit{M}_{B}$ correspondantes aux passages des états initiaux aux état finaux. Pour y arriver, nous écrivons des programmes C++ et python consultables dans \cite{Code}.
 
-\subsection{Série génératrice des polyominos inscrits dans un rectangle du type $2$}
+\subsection{Série génératrice des polyominos inscrits dans un rectangle de type $2$}
 
 
 $\mathit{M}_{2}(1,6)= \dfrac{x-2x^{2}}{1-3x+x^{2}+x^{3}}$,
@@ -2921,9 +2923,9 @@ F_{2}(x)& = & 5x+15x^2+39x3+97x^4+237x5+575x^6+1391x^7+\\ & & 3361x^8+8117x^9+
 & & 131836321x^{20}+O(x^{21}).
 \end{eqnarray*}
 
-Avec cette série, nous confirmons non seulement les $15$ premiers termes de la suite du tableau \ref{v2}, mais aussi la concordance  des $20$ premiers termes de la suite $(S_{n})$ des nombres de polyominos inscrits dans un rectangle du type $2$ avec celle de la suite numéro $A034182 $ de l'\emph{OEIS}.
+Avec cette série, nous confirmons non seulement les $15$ premiers termes de la suite du tableau \ref{v2}, mais aussi la concordance  des $20$ premiers termes de la suite $(S_{n})$ des nombres de polyominos inscrits dans un rectangle de type $2$ avec celle de la suite numéro $A034182 $ de l'\emph{OEIS}.
 
-\subsection{Série génératrice des polyominos inscrits dans un rectangle du type $3$}
+\subsection{Série génératrice des polyominos inscrits dans un rectangle de type $3$}
 
 En notant par $s_{i}(x)$ la fonction génératrice des polyominos partant de l'état initial $e_{i}$, $i\in \{1, 3, 5, 7, 11, 16, 20\}$, à un état final de l'automate $\mathcal{A}_{3}$ 
 \begin{eqnarray*}
@@ -2944,7 +2946,7 @@ En sommant les $s_{i}(x)$,  $i\in \{1, 3, 5, 7, 11, 16, 20\}$, nous obtenons $F_
 F_3(x) &=&\dfrac{x(-x^{8} + 5x^{7} + 10x^{6} - 27x^{5} + 24x^{4} + 7x^{3} - 34x^{2} + 39x - 15)}{(x^{9} - 6x^{8} - 9x^{7} + 29x^{6} - 15x^{5} - 21x^{4} + 45x^{3} - 33x^{2} + 10x - 1)}.
 \end{eqnarray*}
  
-Le développement en série de Taylor à l'ordre $20$ de $F_{3}(x)$ au voisinage de $0$
+Le développement en série de Taylor à l'ordre $20$ de $F_{3}(x)$ au voisinage de $0$ nous donne
 \begin{eqnarray*}
 F_{3}(x) &=&15x+111x^{2}+649x^{3}+3495x^{4}+18189x^{5}+93231x^{6}+\\
 & & 474479x^{7}+2406621x^{8}+12187137x^{9}+61668609x^{10}+311938233x^{11}+\\
