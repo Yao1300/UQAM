@@ -1,0 +1,232 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.11.30)  27 JUL 2021 12:17
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**coquille.tex
+(./coquille.tex
+LaTeX2e <2020-02-02> patch level 2
+L3 programming layer <2020-02-14> (./memoireuqam1.3.cls
+Document Class: memoireuqam1.3 2018/11/23 v1.3N Format LaTeX pour les memoires 
+a l'UQAM.
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
+)
+\c@part=\count167
+\c@chapter=\count168
+\c@section=\count169
+\c@subsection=\count170
+\c@subsubsection=\count171
+\c@paragraph=\count172
+\c@subparagraph=\count173
+\c@figure=\count174
+\c@table=\count175
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen134
+)
+\simpleinter=\skip49
+\doubleinter=\skip50
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: dvips.def on input line 105.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/dvips.def
+File: dvips.def 2017/06/20 v3.1d Graphics/color driver for dvips
+))
+\Gin@req@height=\dimen135
+\Gin@req@width=\dimen136
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2020/02/14 3.40 The Babel package
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def
+File: switch.def 2020/02/14 3.40 Babel switching mechanism
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel-french/french.ldf
+Language: french 2020/01/30 v3.5g French support from the babel system
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2020/02/14 3.40 Babel common definitions
+\babel@savecnt=\count176
+\U@D=\dimen137
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count177
+)
+Package babel Info: \l@acadian = using hyphenrules for french
+(babel)             (\language5) on input line 91.
+Package babel Info: \l@canadien = using hyphenrules for french
+(babel)             (\language5) on input line 92.
+\FB@nonchar=\count178
+Package babel Info: Making : an active character on input line 419.
+Package babel Info: Making ; an active character on input line 420.
+Package babel Info: Making ! an active character on input line 421.
+Package babel Info: Making ? an active character on input line 422.
+\FBguill@level=\count179
+\FBold@everypar=\toks15
+\FB@Mht=\dimen138
+\mc@charclass=\count180
+\mc@charfam=\count181
+\mc@charslot=\count182
+\std@mcc=\count183
+\dec@mcc=\count184
+\c@FBcaption@count=\count185
+\listindentFB=\dimen139
+\descindentFB=\dimen140
+\labelindentFB=\dimen141
+\labelwidthFB=\dimen142
+\leftmarginFB=\dimen143
+\parindentFFN=\dimen144
+\FBfnindent=\dimen145
+))
+(/usr/share/texlive/texmf-dist/tex/latex/carlisle/scalefnt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2018/08/11 v1.3c Input encoding file
+\inpenc@prehook=\toks16
+\inpenc@posthook=\toks17
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2020/02/11 v2.0o Standard LaTeX package
+)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
+File: l3backend-dvips.def 2020-02-03 L3 backend support: dvips
+\l__pdf_internal_box=\box45
+\g__pdf_backend_object_int=\count186
+\l__pdf_backend_content_box=\box46
+\l__pdf_backend_model_box=\box47
+\g__pdf_backend_annotation_int=\count187
+\g__pdf_backend_link_int=\count188
+\g__pdf_backend_link_sf_int=\count189
+)
+(./coquille.aux (./nom_de_fichier_des_remerciements.aux)
+(./nom_de_fichier_du_resume.aux) (./nom_de_fichier_de_l_introduction.aux)
+(./nom_de_fichier_du_premier_chapitre.aux)
+(./nom_de_fichier_du_deuxieme_chapitre.aux)
+(./nom_de_fichier_du_chapitre_suivant.aux)
+(./nom_de_fichier_de_la_conclusion.aux) (./nom_de_fichier_d_une_annexe.aux))
+\openout1 = `coquille.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+\bibindent=\dimen146
+LaTeX Info: Redefining \degres on input line 14.
+
+
+Package french.ldf Warning: Figures' and tables' captions might look like
+(french.ldf)                `Figure 1:' in French instead of `Figure 1 :'.
+(french.ldf)                If it happens, see your class documentation to
+(french.ldf)                fix this issue or add AFTER babel/french
+(french.ldf)                \usepackage[labelsep=period]{caption} or
+(french.ldf)                \usepackage[labelsep=endash]{caption} or
+(french.ldf)                or ... live with it; reported on input line 14.
+
+LaTeX Info: Redefining \dots on input line 14.
+LaTeX Info: Redefining \up on input line 14.
+[1
+
+]
+\openout2 = `nom_de_fichier_des_remerciements.aux'.
+
+
+No file nom_de_fichier_des_remerciements.tex.
+(./coquille.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 3.
+)
+\tf@toc=\write3
+\openout3 = `coquille.toc'.
+
+ [2
+
+
+
+] (./coquille.lot)
+\tf@lot=\write4
+\openout4 = `coquille.lot'.
+
+ [3
+
+] (./coquille.lof)
+\tf@lof=\write5
+\openout5 = `coquille.lof'.
+
+ [4
+
+]
+\openout2 = `nom_de_fichier_du_resume.aux'.
+
+
+No file nom_de_fichier_du_resume.tex.
+\openout2 = `nom_de_fichier_de_l_introduction.aux'.
+
+No file nom_de_fichier_de_l_introduction.tex.
+\openout2 = `nom_de_fichier_du_premier_chapitre.aux'.
+
+No file nom_de_fichier_du_premier_chapitre.tex.
+\openout2 = `nom_de_fichier_du_deuxieme_chapitre.aux'.
+
+No file nom_de_fichier_du_deuxieme_chapitre.tex.
+\openout2 = `nom_de_fichier_du_chapitre_suivant.aux'.
+
+No file nom_de_fichier_du_chapitre_suivant.tex.
+\openout2 = `nom_de_fichier_de_la_conclusion.aux'.
+
+No file nom_de_fichier_de_la_conclusion.tex.
+\openout2 = `nom_de_fichier_d_une_annexe.aux'.
+
+No file nom_de_fichier_d_une_annexe.tex.
+No file coquille.bbl.
+(./coquille.aux (./nom_de_fichier_des_remerciements.aux)
+(./nom_de_fichier_du_resume.aux) (./nom_de_fichier_de_l_introduction.aux)
+(./nom_de_fichier_du_premier_chapitre.aux)
+(./nom_de_fichier_du_deuxieme_chapitre.aux)
+(./nom_de_fichier_du_chapitre_suivant.aux)
+(./nom_de_fichier_de_la_conclusion.aux) (./nom_de_fichier_d_une_annexe.aux)) ) 
+Here is how much of TeX's memory you used:
+ 2539 strings out of 481240
+ 37136 string characters out of 5920402
+ 285697 words of memory out of 5000000
+ 17776 multiletter control sequences out of 15000+600000
+ 535838 words of font info for 34 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 31i,4n,35p,240b,425s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on coquille.dvi (4 pages, 1592 bytes).

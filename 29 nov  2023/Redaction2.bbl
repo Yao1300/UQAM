@@ -1,0 +1,144 @@
+\begin{thebibliography}{}
+
+\bibitem[Amarni, 2015]{Amt}
+Amarni, A. (2015).
+\newblock Compression guidée par automate et noyaux rationnels.
+\newblock {\em Hal Open Science},  13--20.
+
+\bibitem[Bousquet-Mélou, 1993]{Bos1}
+Bousquet-Mélou, M. (1993).
+\newblock q-Énumération de polyominos convexes*.
+\newblock {\em Journal of Combinatorial Theory}, {\em 64}, 265--288.
+
+\bibitem[Bousquet-Mélou et Rechnitzer, 2003]{Bos2}
+Bousquet-Mélou, M.  et Rechnitzer, A. (2003).
+\newblock The site perimeter of bargraphs.
+\newblock {\em Advances in Applied Mathematics}, {\em 31}(1), 86--112.
+
+\bibitem[Chang et Lin, 1988]{Ch-Li}
+Chang, S.-G.  et Lin, K.-Y. (1988).
+\newblock Rigourous results for the number of convex polygons on the square and
+  honeycomb lattices.
+\newblock {\em J. Phys. A:Math.Gen}, {\em 21}, 2635--2642.
+
+\bibitem[Delest et Dulucq, 1993]{De-Du}
+Delest, M.-P.  et Dulucq, S. (1993).
+\newblock Enumeration of directed column-convex animals with given parimeter
+  and area.
+\newblock {\em Croatica Chemica Acta}, {\em 66}(1), 59--80.
+
+\bibitem[Delest et Viennot, 1984]{De-Vi}
+Delest, M.-P.  et Viennot, G.-X. (1984).
+\newblock Algebraic languages and polyominoes enumeration.
+\newblock {\em Theoret. Comput. Sci}, {\em 34}, 169--206.
+
+\bibitem[Derrida \emph{et~al.}, 1982]{DE-Na-Va}
+Derrida, B., Nadal, J.-P. et Vannimenus, J. (1982).
+\newblock Directed lattices animals in 2 dimensions: Numerical and exact
+  results.
+\newblock {\em J. Phys.}, {\em 43}, 1561.
+
+\bibitem[Friedman, a]{Oeis2}
+Friedman, E.
+\newblock {\em Not necessarily symmetric n X 3 crossword puzzle grids}.
+\newblock The On-Line Encyclopedia of Integer Sequences.
+\newblock R\'ecup\'er\'e de \url{https://oeis.org/A034184}
+
+\bibitem[Friedman, b]{Oeis}
+Friedman, E.
+\newblock {\em Number of not-necessarily-symmetric n X 2 crossword puzzle
+  grids}.
+\newblock The On-Line Encyclopedia of Integer Sequences.
+\newblock R\'ecup\'er\'e de \url{https://oeis.org/A034182}
+
+\bibitem[Gardner, 1977]{MarG}
+Gardner, M. (1977).
+\newblock Mathematical games.
+\newblock {\em Scientific American}, {\em 236}(1), 110--121.
+
+\bibitem[Gessel, 1999]{Gess}
+Gessel, I.-M. (1999).
+\newblock On the number of convex polyominoes.
+\newblock {\em Annales des Sciences Mathématiques du Québec},  63--66.
+
+\bibitem[Golomb, 1966]{SWC1}
+Golomb, G. (1966).
+\newblock Tiling with polyominoes.
+\newblock {\em Journal of Combinatorial Theory}, {\em 1}, 280--296.
+
+\bibitem[Golomb, 1989]{SWC2}
+Golomb, G. (1989).
+\newblock Polyominoes which tile rectangles.
+\newblock {\em Journal of Combinatorial Theory}, {\em 1}, 117--124.
+
+\bibitem[Goupil et Cloutier, 2011]{Goup1}
+Goupil, A.  et Cloutier, H. (2011).
+\newblock Enumeration of minimal 3d polyominoes inscribed in a rectangular
+  prism.
+\newblock {\em Proceedings of the Formal Power Series and Algebraic
+  Combinatorics},  423--434.
+
+\bibitem[Goupil \emph{et~al.}, 2010]{Goup2}
+Goupil, A., Cloutier, H. et Nouboud, F. (2010).
+\newblock Enumeration of polyominoes inscribed in a rectangle.
+\newblock {\em Discrete Applied Mathematics}, {\em 158(8)}, 2014--2023.
+
+\bibitem[Goupil \emph{et~al.}, 2013]{Goup3}
+Goupil, A., Cloutier, H. et Pellerin, M.-E. (2013).
+\newblock Generating functions for inscribed polyominoes.
+\newblock {\em Discrete Applied Mathematics}, {\em 161(1-2)}, 151--166.
+
+\bibitem[Gouyou-Beauchamps et Viennot, 1988]{Go-Vi}
+Gouyou-Beauchamps, D.  et Viennot, G.-X. (1988).
+\newblock Equivalence of two-dimensional directed animal problem to
+  one-dimenssional path problem.
+\newblock {\em Adv. in App.Math}, {\em 9}, 334--357.
+
+\bibitem[Hakim et Nadal, 1983]{Ha-Na}
+Hakim, G.  et Nadal, J.-P. (1983).
+\newblock Exact results for 2d directed lattice animals on a strip of finite
+  width.
+\newblock {\em J. Phys. A:Math.Gen}, {\em 16}, 213--218.
+
+\bibitem[Hopcroft \emph{et~al.}, 1979]{Auto1}
+Hopcroft, J.-E., Motwani, R. et Ullman, J.-D. (1979).
+\newblock {\em Introduction to automata theory, languages and computation}.
+\newblock Num\'ero ~2. USA: Addison-Wesley.
+
+\bibitem[Klarner et Rivest, 1973]{K1-Ri1}
+Klarner, D.-A.  et Rivest, R.-L. (1973).
+\newblock A procedure for improving the upper bound for the number of
+  $n$-ominoes.
+\newblock {\em Canad. J. Math}, {\em 25}, 585--602.
+
+\bibitem[Kreweras, 1972]{Kre}
+Kreweras, G. (1972).
+\newblock Sur les partitions non croisées d'un cycle.
+\newblock {\em Discrete Applied Mathematics}, {\em 1}(4), 333--350.
+
+\bibitem[Privman et Svrakic, 1988]{Pr-Sv}
+Privman, V.  et Svrakic, N.-M. (1988).
+\newblock Exact generating function for fully directed compact lattice animals.
+\newblock {\em Phys. Rev. Lett.}, {\em 60}(12), 1107--1109.
+
+\bibitem[Rabin et Scott, 1959]{RaSc}
+Rabin, M.-O.  et Scott, D. (1959).
+\newblock Finite automata and their decision problems.
+\newblock {\em IBM J. of Research and Development}, {\em 3}, 114--125.
+
+\bibitem[Rousseau, 2014]{Rous}
+Rousseau, C. (2014).
+\newblock Passera, passera pas?
+\newblock {\em Accromath}, {\em 9}(1), 8--13.
+
+\bibitem[Sipser, 1996]{Auto2}
+Sipser, M. (1996).
+\newblock {\em Introduction to the theory of computation}  (1st \'ed.).
+\newblock Massachusets: PWS Publishing Company.
+
+\bibitem[Viennot, 1985]{Vie1}
+Viennot, G.-X. (1985).
+\newblock Problèmes combinatoires posés par la physique statistique.
+\newblock {\em Séminaire Bourbaki}, {\em 1983/84}(626), 225--246.
+
+\end{thebibliography}

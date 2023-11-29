@@ -1,0 +1,91 @@
+\babel@toc {french}{}
+\vspace {1.5ex}
+\contentsline {chapter}{\MakeUppercase {Liste des tableaux}}{v}%
+\vspace {1.5ex}
+\contentsline {chapter}{\MakeUppercase {LISTE DES FIGURES}}{vi}%
+\contentsline {chapter}{INTRODUCTION}{1}%
+\vspace {1.5ex}
+\contentsline {chapter}{\MakeUppercase {Chapitre\hskip 0.5em I} \hskip 0.5em \MakeUppercase {Préliminaires}}{5}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {1.1}Généralités sur les polyominos}{5}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {1.1.1}Quelques définitions et exemples}{5}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {1.1.2}Quelques classes de polyominos}{7}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {1.2}Polyomino inscrit dans un rectangle}{9}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {1.3}Théorie des langages, des automates et des transducteurs}{11}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {1.3.1}Monoïde et semi-anneau }{12}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {1.3.2}Alphabet, mot, langage}{12}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {1.3.3}Automate}{13}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {1.3.4}Transducteur}{16}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {1.4}Automates $\mathcal {A}_{B}$ des polynominos contenus dans un rectangle de largeur $B$}{19}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {1.5}Partition non croisée}{20}%
+\vspace {1.5ex}
+\contentsline {chapter}{\MakeUppercase {Chapitre\hskip 0.5em II} \hskip 0.5em \MakeUppercase {Automate décrivant les polyominos inscrits dans un rectangle}}{21}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {2.1}Généralités}{22}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {2.1.1}État}{22}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {2.1.2}L'alphabet et les transitions d'états}{38}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {2.2}Automate $\mathcal {A}_{2}$}{68}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {2.3}Automate $\mathcal {A}_{3}$}{71}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {2.4}Validation des valeurs dans les matrices de transfert $\mathcal {M}_{2}$ et $\mathcal {M}_{3}$}{76}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {2.4.1}Validation des valeurs de la matrice $\mathcal {M}_{2}$}{76}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {2.4.2}Validation des valeurs de la matrice $\mathcal {M}_{3}$}{80}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {2.5}Séries génératrices}{82}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {2.5.1}Série génératrice des polyominos inscrits dans un rectangle du type $2$}{82}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {2.5.2}Série génératrice des polyominos inscrits dans un rectangle du type $3$}{84}%
+\vspace {1.5ex}
+\contentsline {chapter}{\MakeUppercase {Chapitre\hskip 0.5em III} \hskip 0.5em \MakeUppercase {Automate décrivant les forêts de polyominos inscrites dans un rectangle}}{86}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {3.1} Généralités sur l'automate $\mathcal {A}_{FB}$}{86}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {3.1.1}État}{86}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {3.1.2}Transition entre les états}{89}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {3.2}Automate $A_{F3}$}{94}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {3.2.1}États}{94}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {3.2.2}Matrice de transitions}{96}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {3.3}Calcul du nombre de forêts de polyominos inscrites dans un rectangle de base $3$ et de hauteur $h=n+1$ pour quelques valeurs de $n$. }{96}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {3.4}Séries génératrices de l'automate $\mathcal {A}_{F3}$}{98}%
+\vspace {1.5ex}
+\contentsline {chapter}{\MakeUppercase {Chapitre\hskip 0.5em IV} \hskip 0.5em \MakeUppercase {Aspects alogorithmiques des formules portant sur les automates $A_{B}$ et $A_{FB}$}}{102}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {4.1}Calcul du périmètre d'un état}{102}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {4.2}Nombre de périmètre échangé lors d'une transition d'un état à un autre}{103}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {4.3}Nombre de feuilles d'un état}{104}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {4.3.1}Nombre de feuilles d'un état initial}{104}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {4.3.2}Nombre de feuilles d'un état interne}{107}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {4.4}Nombre de feuilles échangées lors d'une transition}{109}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {4.5}Décomposition en composantes connexes}{111}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {4.6}Composante connexe}{114}%
+\contentsline {chapter}{CONCLUSION ET PERSPECTIVES}{117}%

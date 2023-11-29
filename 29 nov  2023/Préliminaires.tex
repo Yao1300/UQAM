@@ -1,0 +1,906 @@
+\chapter{Préliminaires}
+Ce chapitre  rappelle quelques concepts fondamentaux qui sont utiles dans la suite de ce mémoire. Il s'agit donc de la terminologie et des résultats déjà connus dans la littérature sur lesquels se base l'essentiel de nos travaux. 
+
+Nous évoquons dans  un premier temps quelques généralités sur les polyominos.  Ensuite, nous rappelons quelques notions sur la théorie des langages et des automates. Puis nous terminons avec la notion de partition non croisée.
+\section{Généralités sur les polyominos}
+Dans cette section, nous passons en revue quelques définitions et propriétés  sur les polyominos.
+\begin{spacing}{0.30}
+\subsection{Quelques définitions et exemples}
+\end{spacing}
+ Une \emph{cellule} est un carré dont les côtés mesurent l'unité (figure \ref{fig1}). Deux cellules sont dites \emph{adjacentes} si et seulement si elles ont un côté en commun.
+\begin{figure}[!htb]
+\begin{minipage}[c]{.2\linewidth}
+  \centering
+\end{minipage}
+\hfill
+  \begin{minipage}[c]{.76\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=1,columns=1,color=cyan!100]
+%\valueH{1,2,3}
+%\valueV{1,2,3}
+\setrow{2}{{}}
+\fillcell{1}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}%
+\end{minipage}
+ \caption{\label{fig1} Une cellule.}
+\hfill
+\end{figure}
+ Un \emph{polyomino} est un ensemble connexe de cellules (figure \ref{fig2a1}).
+
+ Une \emph{forêt} de polyominos est une collection de polyominos disjoints (figure \ref{fig2a2}). Chaque polyomino d'une forêt de polyominos est une \emph{composante connexe} de cette dernière. Deux cellules appartenant à une même composante connexe sont dites \emph{connectées}.
+ 
+
+\begin{figure}[!htb]
+\begin{minipage}[c]{.07\linewidth}
+  \centering
+\end{minipage}\hfill
+%\begin{subfigure}[t]{0.36\textwidth}
+\begin{minipage}[c]{.50\linewidth}
+  \centering
+  \begin{minipage}[c]{.20\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=4,columns=1,color=cyan!100, width=750px,scale=0.5]
+%\valueH{1,2,3}
+%\valueV{1,2,3}
+\setrow{3}{{}}
+\setrow{2}{{}}
+\setrow{1}{{}}
+\setrow{4}{{}}
+\fillcell{1}{1}
+\fillcell{1}{2}
+\fillcell{1}{3}
+\fillcell{1}{4}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\begin{minipage}[c]{.25\linewidth}
+\centering
+\begin{logicpuzzle}[rows=3,columns=3,color=cyan!100, width=750px,scale=0.5]
+%\valueH{1,2,3}
+%\valueV{1,2,3}
+\setrow{3}{{},{},}
+\setrow{2}{,{},}
+\setrow{1}{{},{},{}}
+\fillcell{1}{3}
+\fillcell{2}{3}
+\fillcell{2}{2}
+\fillcell{1}{1}
+\fillcell{2}{1}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\subcaption{\label{fig2a1} Des polyominos.\quad\quad\quad\quad}
+\end{minipage}
+%\end{subfigure}
+%\begin{subfigure}[t]{0.36\textwidth}
+\begin{minipage}[c]{.45\linewidth}
+   \centering 
+\begin{minipage}[c]{.05\linewidth}
+   \centering 
+\end{minipage}\hfill
+\begin{minipage}[c]{.70\linewidth}
+   \centering 
+\begin{logicpuzzle}[rows=4,columns=3,color=cyan!100, width=750px,scale=0.5]
+\setrow{4}{{},,}
+\setrow{3}{{},{},}
+\setrow{2}{,{},{}}
+\setrow{1}{{},{},{}}
+\fillcell{1}{4}
+\fillcell{1}{3}
+\fillcell{2}{2}
+\fillcell{1}{1}
+\fillcell{2}{1}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{flushleft}
+\subcaption{\label{fig2a2} Une forêt de deux polyominos inscrite dans un rectangle de largeur $3$ et de hauteur $4$.}
+\end{flushleft}
+\end{minipage}
+%\end{subfigure}
+\hfill
+\caption{\label{figPF} Deux polyominos et une forêt de polyominos.}
+\end{figure}
+ 
+ Un \emph{pas} ou un \emph{déplacement unitaire} entre deux cellules connexes est le segment (vertical ou horizontal) de longueur unité ayant pour extrémités les centres de ces cellules. Son orientation dépend ainsi de la position de l'une des cellules par rapport à l'autre (en tenant compte des quatre points cardinaux).
+ 
+ Un \emph{chemin} dans un polyomino est une suite de pas connectés deux à deux aux extrémités.
+
+Le \emph{degré} d'une  cellule d'un  polyomino  est le nombre de cellules qui lui sont adjacentes et chacune de ses cellules de degré $1$   est appelée \emph{feuille}. 
+
+ Dans un polyomino, nous définissons le \emph{périmètre} d'une cellule comme  étant la différence entre le nombre $4$ et son degré.
+ 
+ 
+ \begin{figure}[!htb]
+\begin{minipage}[c]{.17\linewidth}
+\centering
+
+\end{minipage}\hfill
+\begin{minipage}[c]{.56\linewidth}
+        \centering
+\begin{logicpuzzle}[rows=3,columns=4,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{1}
+\fillcell{2}{1}
+\fillcell{3}{1}
+\fillcell{4}{1}
+\fillcell{1}{2}
+\fillcell{1}{3}
+\fillcell{2}{3}
+\fillcell{3}{3}
+\fillcell{3}{2}
+\fillcell{2}{3}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\caption{\label{figper}Exemple de polyomino inscrit dans le rectangle $4\times 3$. }
+\end{figure}
+
+  L'\emph{aire} d'un polyomino est le nombre de cellules qui le constituent 
+et  son \emph{périmètre} est la somme des périmètres  de toutes les cellules qui le composent.
+\begin{Ex}\label{ex1}
+ Considérons le  polyomino de la figure \ref{figper}. À part la cellule de droite de la ligne en bas et celle qui lui est adjacente (à gauche) dont les périmètres sont respectivement  $3$ et $1$ , les sept autres cellules ont chacune $2$ comme périmètre. Le périmètre total de ce polyomino est alors $2\times 7 +3+1=18$. Son  aire est $9$ et il  a une feuille.
+\end{Ex} 
+\begin{spacing}{0.30}
+\subsection{Quelques classes de polyominos}
+\end{spacing}
+ Un polyomino  \emph{colonne} est un polyomino dont les cellules sont empilées verticalement l'une au-dessus de l'autre sur une seule colonne formant ainsi un ensemble connexe.
+
+ Un polyomino  \emph{ligne} est un polyomino obtenu d'un polyomino colonne par une rotation de $90^{\circ}$.
+\begin{figure}[!htb]
+\begin{minipage}[c]{.07\linewidth}
+\centering
+
+\end{minipage}\hfill
+\begin{minipage}[c]{.37\linewidth}
+\centering
+\begin{minipage}[c]{.17\linewidth}
+\centering
+\end{minipage}\hfill
+\begin{minipage}[c]{.69\linewidth}
+\centering
+\begin{logicpuzzle}[rows=4,columns=1,color=cyan!100, width=750px,scale=0.5]
+\setrow{3}{{}}
+\setrow{2}{{}}
+\setrow{1}{{}}
+\setrow{4}{{}}
+\fillcell{1}{1}
+\fillcell{1}{2}
+\fillcell{1}{3}
+\fillcell{1}{4}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\subcaption{\label{fig5}Polyomino colonne\quad\quad\quad\quad.}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.36\linewidth}
+        \centering
+\begin{logicpuzzle}[rows=1,columns=5,color=cyan!100, width=750px,scale=0.5]
+\setrow{3}{{}}
+\setrow{2}{{}}
+\setrow{1}{{}}
+\setrow{4}{{}}
+\fillcell{1}{1}
+\fillcell{2}{1}
+\fillcell{3}{1}
+\fillcell{4}{1}
+\fillcell{5}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+ \subcaption{\label{fig6}Polyomino ligne.\quad\quad\quad\quad\quad\quad}
+\end{minipage}
+\hfill
+\caption{\label{fign2023} Exemples de polyominos colonne et ligne. }
+\end{figure}
+
+ Un polyomino est dit \emph{verticalement convexe} si chacune de ses colonnes est un ensemble connexe de cellules.
+
+ Il est dit \emph{ horizontalement convexe} si chacune de ses lignes est un ensemble connexe de cellules.
+
+ Il est dit \emph{convexe} s'il est à la fois horizontalement et verticalement convexe.
+
+\begin{figure}[!htb]
+%\includegraphics[scale=0.7]{cov2bleubis.eps}
+%(1)\quad\quad
+%\includegraphics[scale=0.7]{conv3bleubis.eps}
+%(2)\quad\quad
+%\includegraphics[scale=0.7]{conv1bleu.eps}
+%(3)
+\begin{minipage}[c]{.25\linewidth}
+        \centering
+\begin{logicpuzzle}[rows=7,columns=5,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{1}
+\fillcell{1}{2}
+\fillcell{1}{3}
+\fillcell{1}{4}
+\fillcell{2}{4}
+\fillcell{3}{4}
+\fillcell{4}{4}
+\fillcell{5}{4}
+\fillcell{2}{5}
+\fillcell{3}{5}
+\fillcell{4}{5}
+\fillcell{5}{5}
+\fillcell{2}{6}
+\fillcell{5}{3}
+\fillcell{2}{7}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+ %\caption{\label{fig3222023}(1).}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.25\linewidth}
+        \centering
+\begin{logicpuzzle}[rows=7,columns=5,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{1}
+\fillcell{1}{2}
+\fillcell{1}{3}
+\fillcell{1}{4}\fillcell{1}{1}
+\fillcell{1}{2}
+\fillcell{1}{3}
+\fillcell{1}{4}
+\fillcell{2}{4}
+\fillcell{3}{4}
+\fillcell{4}{4}
+\fillcell{5}{4}
+\fillcell{2}{5}
+\fillcell{3}{5}
+\fillcell{4}{5}
+\fillcell{5}{5}
+\fillcell{2}{6}
+\fillcell{2}{4}
+\fillcell{3}{4}
+\fillcell{4}{4}
+\fillcell{5}{4}
+\fillcell{2}{5}
+\fillcell{3}{5}
+\fillcell{4}{5}
+\fillcell{5}{5}
+\fillcell{2}{6}
+\fillcell{2}{7}
+\fillcell{3}{7}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+ %\caption{\label{fig2222023}(2).}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.25\linewidth}
+        \centering
+\begin{logicpuzzle}[rows=7,columns=5,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{1}
+\fillcell{1}{2}
+\fillcell{1}{3}
+\fillcell{1}{4}
+\fillcell{2}{4}
+\fillcell{3}{4}
+\fillcell{4}{4}
+\fillcell{5}{4}
+\fillcell{2}{5}
+\fillcell{3}{5}
+\fillcell{4}{5}
+\fillcell{5}{5}
+\fillcell{2}{6}
+\fillcell{2}{7}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+ %\caption{\label{fig1222023}(3).}
+\end{minipage}
+\hfill
+\caption{\label{fig7} Ces polyominos de la gauche vers la droite sont verticalement convexe, horizontalement convexe et  convexe.}
+\end{figure} 
+\begin{Ex}\label{ex3}
+Les polyominos  de  la figure \ref{fig7} sont de la gauche vers la droite  verticalement convexe, horizontalement convexe et convexe.
+\end{Ex}
+ 
+  
+ Le polyomino \emph{parallélogramme}  est un polyomino convexe dont la suite des niveaux des  cellules les plus basses (respectivement les plus hautes) de ses colonnes croit de la gauche vers la droite (figure \ref{fig8}).
+\begin{figure}[!htb]
+%\begin{center}
+%\includegraphics[scale=0.7]{conv3bleu.eps}
+\begin{minipage}[c]{.25\linewidth}
+        \centering
+
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.63\linewidth}
+        \centering
+\begin{logicpuzzle}[rows=8,columns=5,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{1}
+\fillcell{2}{1}
+\fillcell{1}{2}
+\fillcell{2}{2}
+\fillcell{1}{3}
+\fillcell{2}{3}
+\fillcell{1}{4}
+\fillcell{2}{4}
+\fillcell{3}{4}
+\fillcell{4}{4}
+\fillcell{2}{5}
+\fillcell{3}{5}
+\fillcell{4}{5}
+\fillcell{2}{6}
+\fillcell{3}{6}
+\fillcell{4}{6}
+\fillcell{5}{6}
+\fillcell{3}{7}
+\fillcell{4}{7}
+\fillcell{5}{7}
+\fillcell{5}{8}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\caption{\label{fig8} Polyomino parallélogramme.}
+%\end{center}
+\end{figure}
+
+Un polyomino \emph{serpent} est un polyomino qui a au moins deux cellules et dont   deux cellules sont de degré $1$ et les autres de degré $2$ (figure \ref{serp1}).
+\begin{figure}[!htb]
+\begin{minipage}[c]{.03\linewidth}
+   \centering 
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.66\linewidth}
+   \centering
+\begin{logicpuzzle}[rows=6,columns=7,color=cyan!100, width=750px,scale=0.5]
+%\valueH{1,2,3}
+%\valueV{1,2,3}
+\fillcell{2}{1}
+\fillcell{2}{2}
+\fillcell{1}{1}
+\fillcell{2}{3}
+\fillcell{3}{3}
+\fillcell{3}{4}
+\fillcell{4}{4}
+\fillcell{5}{4}
+\fillcell{5}{5}
+\fillcell{5}{6}
+\fillcell{6}{6}
+\fillcell{7}{6}
+\fillcell{7}{5}
+\fillcell{7}{4}
+\fillcell{7}{3}
+\fillcell{6}{3}
+\fillcell{6}{2}
+\fillcell{5}{2}
+\fillcell{4}{2}
+\fillcell{4}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\caption{\label{serp1} Polyomino serpent.}
+\end{figure}
+
+\section{Polyomino inscrit dans un rectangle}
+ Un polyomino est dit \emph{contenu}  dans un rectangle si aucune de ses cellules n'est en dehors de ce dernier.  Dans ce cas on dit que ce rectangle le \emph{contient}. 
+
+  Ainsi tout polyomino est dit \emph{inscrit} dans le plus petit rectangle qui le contient (figure \ref{fig41}).
+
+
+ Une forêt de polyominos est dite \emph{inscrite} dans un rectangle $B\times H$, où $B, H\in \mathbb{N}-\{0\}$, si ce dernier est le plus petit rectangle qui la contient (figure \ref{Supfig4}).
+
+
+ Le rectangle dans lequel est inscrit un polyomino ou une forêt de polyominos est dit rectangle \emph{circonscrit} à ce polyomino ou à cette forêt de polyominos.
+
+\begin{figure}[!htb]
+\begin{minipage}[c]{.07\linewidth}
+\centering
+\end{minipage}\hfill
+\begin{minipage}[c]{.36\linewidth}
+\begin{minipage}[c]{.36\linewidth}
+        \centering
+\begin{logicpuzzle}[rows=3,columns=3,color=cyan!100, width=750px,scale=0.5]
+\setrow{3}{{},{},}
+\setrow{2}{,,{}}
+\setrow{1}{{},{},{}}
+\fillcell{1}{3}
+\fillcell{2}{3}
+\fillcell{2}{2}
+\fillcell{1}{1}
+\fillcell{2}{1}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill 
+\begin{minipage}[c]{.46\linewidth}
+ \centering
+ \begin{minipage}[c]{.26\linewidth}
+ \centering
+ \end{minipage}\hfill
+ \begin{minipage}[c]{.76\linewidth}
+ \centering
+\begin{logicpuzzle}[rows=3,columns=3,color=cyan!100, width=750px,scale=0.5]
+\setrow{3}{{},{},}
+\setrow{2}{,,{}}
+\setrow{1}{{},{},{}}
+\fillcell{1}{3}
+\fillcell{2}{3}
+\fillcell{3}{3}
+\fillcell{2}{2}
+\fillcell{2}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\end{minipage}
+\subcaption{\label{fig41} Polyominos inscrits dans le rectangle $3\times 3$.}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.36\linewidth}
+        \centering
+\begin{minipage}[c]{.26\linewidth}
+ \centering
+\end{minipage}\hfill
+\begin{minipage}[c]{.68\linewidth}
+ \centering
+\begin{logicpuzzle}[rows=3,columns=3,color=cyan!100, width=750px,scale=0.5]
+\setrow{3}{{},{},}
+\setrow{2}{,,{}}
+\setrow{1}{{},{},{}}
+\fillcell{2}{3}
+\fillcell{2}{2}
+\fillcell{2}{1}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\subcaption{\label{fig4} Polyomino  non inscrit dans le rectangle $3\times 3$.}
+\end{minipage}
+\caption{\label{figPIN} Exemples de deux polyominos inscrits et un polyomino non inscrit. }
+\end{figure}
+
+\begin{figure}[!htb]
+\begin{minipage}[c]{.05\linewidth}
+ \centering
+ 
+ \end{minipage}
+ \hfill
+ \begin{minipage}[c]{.66\linewidth}
+ \centering
+\begin{logicpuzzle}[rows=5,columns=4,color=cyan!100, width=750px,scale=0.5]
+\fillcell{4}{1}
+\fillcell{4}{2}
+\fillcell{1}{5}
+\fillcell{1}{4}
+\fillcell{1}{3}
+\fillcell{4}{5}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\caption{\label{Supfig4} Forêt de polyominos inscrite dans le rectangle $4\times 5$.}
+\end{figure}
+\begin{Ex}\label{ex2}
+Les polyominos de la figure \ref{fig41}  sont inscrits dans le rectangle $3 \times 3$ (carré de côté $3$) alors que le polyomino de la figure \ref{fig4} est non inscrit dans le carré $3\times 3$ dans lequel il est contenu, car il ne touche pas le bord  gauche.
+\end{Ex}
+
+
+ La \emph{hauteur} et la \emph{largeur} d'un polyomino sont respectivement la hauteur et la largeur du rectangle qui lui est circonscrit.
+
+
+ Un polyomino d'aire minimale, ou d'indice $0$, est un polyomino inscrit
+dans un rectangle $B\times H$ et d'aire $B + H - 1$.
+
+Un polyomino d'aire minimale plus $r$, ou d'indice $r$, est un polyomino inscrit
+dans un rectangle $B\times H$ et d'aire $B + H+r - 1$.
+ 
+\begin{Ex}\label{expolyind0}
+Le polyomino de la figure \ref{PolyInd0} et celui de la figure \ref{PolyInd1} sont respectivemnt d'indice $0$  et d'indice $1$.
+\begin{figure}[!htb]
+\begin{minipage}[c]{.06\linewidth}
+ \centering
+\end{minipage}\hfill
+\begin{minipage}[c]{.36\linewidth}
+ \centering
+ \begin{minipage}[c]{.26\linewidth}
+ \centering
+ \end{minipage}\hfill
+ \begin{minipage}[c]{.66\linewidth}
+ \centering
+\begin{logicpuzzle}[rows=5,columns=4,color=cyan!100, width=750px,scale=0.5]
+\fillcell{4}{5}
+\fillcell{3}{5}
+\fillcell{2}{5}
+\fillcell{1}{5}
+\fillcell{3}{4}
+\fillcell{3}{3}
+\fillcell{3}{2}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\subcaption{\label{PolyInd0} Polyomino d'indice $0$.}
+\end{minipage}
+ \hfill
+ \begin{minipage}[c]{.46\linewidth}
+ \centering
+ \begin{minipage}[c]{.06\linewidth}
+ \centering
+\end{minipage}\hfill
+\begin{minipage}[c]{.76\linewidth}
+ \centering
+\begin{logicpuzzle}[rows=5,columns=4,color=cyan!100, width=750px,scale=0.5]
+\fillcell{4}{5}
+\fillcell{3}{5}
+\fillcell{2}{5}
+\fillcell{1}{5}
+\fillcell{3}{4}
+\fillcell{3}{3}
+\fillcell{3}{2}
+\fillcell{3}{1}
+\fillcell{4}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\subcaption{\label{PolyInd1} Polyomino d'indice $1$.}
+\end{minipage}
+\caption{\label{figPIND}Exemples de polyominos d'indice $0$ et d'indice $1$.}
+\end{figure}
+\end{Ex} 
+
+L'étude des polyominos d'indice $r=0,1,2$ a fait l'objet de quelques articles de Goupil et \emph{al}. Dans un premier temps, cette famille de ployominos, inscrits dans un rectangle de taille donnée, a été introduite dans la publication \cite{Goup2} où plusieurs formules exactes ainsi que les fonctions génératrices ont été établies puis utilisées pour énumérer les polyominos arbres  inscrits dans un rectangle d'aire minimale plus un. On retrouve des résultats similaires en dimensions $3$, cas des polycubes, dans \cite{Goup1}. Ensuite, des formules préétablies dans \cite{Goup2} sont déduites les fonctions génératrices et les formules exactes des polyominos  d'indice $1$ et $2$, faisant ainsi l'objet de l'article \cite{Goup3}.
+
+ À partir des résultats sur la série génératrice du nombre de polyominos convexes inscrits dans un rectangle de taille $B\times H$, \cite{Ch-Li}, \cite{Gess} donnent  une formule permettant de calculer ce nombre.
+ 
+ Tout comme  dans les publications de Goupil précitées, l'énumération des polyominos inscrits est détaillée par plusieurs auteurs  dont \cite{Bos1}.\\
+
+ Dans la plupart des travaux portant sur les polyominos inscrits, l'objectif principal est le dénombrement des polyominos en fonction de certains paramètres tels que le périmètre, l'aire et le nombre de feuilles. Dans ce mémoire, nous nous proposons de dénombrer les polyominos inscrits dans un rectangle $B \times H$, $H$ variable, en fonction de la hauteur du rectangle, de l'aire et du périmètre de chaque polyomino et chaque forêt de polyominos inscrits. 
+%\section{Polynôme de Laurent} 
+ %\begin{Def}
+ %Un polynôme de Laurent est une généralisation de la notion de polynôme où l'on autorise les puissances de l'indéterminée à être négatives.
+ %\end{Def}
+ \begin{spacing}{0.30}
+\section{Théorie des langages, des automates et des transducteurs}
+\end{spacing}
+La théorie des langages, des automates et des transducteurs  est l'un des outils fondamentaux dont nous avons besoins dans la suite de nos travaux. Les automates nous facilitent particulièrement l'énumération de tous les polyominos inscrits, dans un rectangle donné, sans omission.
+\begin{spacing}{0.30}
+\subsection{Monoïde et semi-anneau }\label{defaut1}
+\end{spacing}
+\begin{Def}
+\begin{itemize}
+\item[(i)]Soit $G$ un ensemble muni d'une loi interne, notée $\star$, associative et admettant un élément neutre $e$. Alors le couple  $(G,\star)$ est un monoïde. Il est dit commutatif lorsque pour tout $g, h\in G$, $g\star h=h\star g$.
+
+\item[(ii)] Soit $(G,\star, \bot)$ un triplet dont $G$ un ensemble avec   $\star$ et $\bot$  des lois associatives. On suppose qu'il existe deux éléments $e$ et $1$ de $G$ tels que $(G,\star)$ soit un monoïde commutatif d'élément neutre $e$ et $(G,\bot)$ un monoïde d'élément neutre $1$. Alors $(G,\star, \bot)$ est appelé semi-anneau. Plus généralement dans un semi-anneau $(G,\star, \bot)$, la loi $\star$ est l'addition ($+$)  d'élément neutre $0$ et $\bot$ est la multiplication ($\times$) d'élément neutre $1$.
+\end{itemize}
+\end{Def}
+\begin{spacing}{0.30}
+\subsection{Alphabet, mot, langage}\label{defaut1}
+\end{spacing}
+ Un \emph{alphabet} $\Sigma$ est un ensemble fini de symboles.
+ 
+ Un \emph{mot} $w$ sur un alphabet $\Sigma$ est une suite finie de symboles de $\Sigma$.
+ 
+ La longueur d'un mot $w$, notée $\vert w\vert$ est le nombre de symboles le  constituant. Par convention pour tout alphabet $\Sigma$, il existe un mot de longueur $0$ noté $\varepsilon$ et  appelé \emph{mot vide}.
+ 
+ L'ensemble de tous les mots sur l'alphabet $\Sigma$ est noté $\Sigma^{*}.$
+ 
+ $\Sigma^{*}$ muni de la concaténation est un monoïde libre.
+ 
+ Un langage sur un alphabet $\Sigma$ est un  ensemble fini ou infini de mots sur $\Sigma$. C'est un sous-ensemble de $\Sigma^{*}$.
+\begin{Ex}\label{exaut1}
+ $\Sigma_{1} = \{a,b,c\},$  $\Sigma_{2}= \{\lambda,\mu,\nu,\omega\}$ sont deux exemples d'alphabets. $w_{1}=abbca$ et $w_{2}=\mu\nu\lambda\nu\nu$ sont des mots respectivement sur $\sum_{1}$  et sur $\sum_{2}$ de longueur $5$.
+\end{Ex}
+\begin{spacing}{0.30}
+\subsection{Automate}\label{defaut2}\mbox{ }\\
+\end{spacing}
+Un automate fini \emph{élémentaire}  est la donnée d'un  quintuplet
+$$\mathcal{A}= \left(Q,\Sigma,I,F,R\right)$$
+où $Q$ est un ensemble fini non vide d'éléments appelés  \emph{états} de $\mathcal{A}$, $\Sigma$ est un \emph{alphabet} fini appelé alphabet de l'automate $\mathcal{A}$, $I$ et $F$ sont des sous-ensembles non vides de $Q$  dont les éléments sont respectivement les états \emph{initiaux} et les états \emph{finaux} de $\mathcal{A}$, puis $R$ est un sous-ensemble de $Q \times \Sigma \times Q$ appelé ensemble des \emph{transitions}. 
+Pour un  tel automate, si $(p,w,q)\in R$ on a $\vert w \vert =1$. 
+
+On désigne par $\delta$ la relation sur $Q$ dont le graphe est $R$  c'est-à-dire pour $p,q\in Q$, $p\delta q$ si et seulement s'il existe $w\in \Sigma$ tel que $(p,w,q)\in R$. On note par $D_{\delta}$ l'ensemble  $\left\lbrace (p,w)\in Q\times \Sigma : \exists q \in Q, (p,w,q)\in R\right\rbrace$. On note que $ \delta$ définit une relation qui n'est pas nécessairement une fonction entre $D_{\delta}$ et $Q$, car on peut avoir $(p,w,q_{1})$, $(p,w,q_{2})\in R$ avec $q_{1}\neq q_{2}$.
+\begin{Rem}\label{remaut12}
+On étend naturellement  $\delta$ à $$D_{\delta}^{*}=\left\lbrace (p,w)\in Q\times \Sigma^{*} : \exists q \in Q, (p,w,q)\in R \subset Q\times \Sigma^{*}\times Q\right\rbrace$$  en posant:
+\begin{eqnarray*}
+\delta(q,\varepsilon) &=& q,\\
+\delta(q,aw) &= & \delta(\delta(q,a),w), \quad \textit{ avec  } a\in \Sigma \textit{ et } w\in \Sigma^{*}.
+\end{eqnarray*}
+
+Ainsi on a la  définition généralisée d'un automate fini en considérant $R$ comme étant un sous-ensemble de  $Q\times \sum^{*}\times Q$. Les transitions dans ce cas sont des mots. Un tel automate n'est plus élémentaire lorsqu'au moins une de ses transitions est de longueur supérieure ou égale à $2$.
+\begin{Ex}\label{exautG}
+L'illustration de la figure \ref{Figau2} représente un automate fini élémentaire pour lequel  $I=\{q_{0}, q_{2}\}$,  $\Sigma = \{a,b\},$ $Q=\{q_{0}, q_{1}, q_{2}, q_{3}, q_{4}, q_{5}, r_{1}, r_{2}\},$  $F= \{q_{1}, q_{5}, r_{1}\}$ et 
+\begin{eqnarray*}
+R &=&\{ (q_{0},a,q_{1}), (q_{0},b,r_{1}), (q_{1},a,q_{1}), (q_{1},b,q_{2}), (q_{2},a,q_{1}), (q_{2},b,q_{2}),(r_{1},b,r_{1}),\\
+& & (r_{1},a,r_{2}), (r_{2},b,r_{1}), (r_{2},a,r_{2}), (q_{0},b,q_{3}), (q_{0},a,q_{4}), (q_{4},a,q_{4}), (q_{4},b,r_{1}),\\ 
+& &(q_{5},a,r_{2}), (q_{5},a,q_{4}), (q_{3},b,q_{2}), (q_{2},b,r_{2})\}.
+\end{eqnarray*}
+\begin{figure}[!htb]
+\begin{minipage}[c]{.01\linewidth}
+ \centering
+ 
+ \end{minipage}
+ \hfill
+ \begin{minipage}[c]{.96\linewidth}
+ \centering
+ \begin{tikzpicture}[shorten >=1pt,node distance=3cm,initial text=,auto]
+  \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+  \node[state,initial]   (s)                       {$q_0$};
+  \node[state]           (q_0) [right of=s]     {$q_0$};
+  \node[state]           (q_3) [below of=s]     {$q_3$};
+  \node[state]           (q_4) [right of=s]     {$q_4$};
+  \node[state,accepting] (q_5) [right of=q_4]  {$q_5$};
+  \node[state,accepting] (q_1) [below left of=s]  {$q_1$};
+  \node[state,initial]           (q_2) [below of=q_1]     {$q_2$};
+  \node[state,accepting] (r_1) [below right of=s] {$r_1$};
+  \node[state]           (r_2) [below of=r_1]     {$r_2$};
+
+  \path[->]
+  (s)   edge              node {a} (q_1)
+        edge              node {b} (r_1)
+        edge              node {a} (q_0)
+        edge              node {b} (r_1)
+        edge              node {b} (q_3)
+  (q_1) edge [loop left]  node {a} (   )
+        edge [bend left]  node {b} (q_2)
+  (q_2) edge [loop below]  node {b} (   )
+        edge [bend left]  node {a} (q_1)
+        edge              node {b} (r_2)
+  (r_1) edge [loop right] node {b} (   )
+        edge [bend left]  node {a} (r_2)
+  (r_2) edge [loop right] node {a} (   )
+        edge [bend left]  node {b} (r_1)
+  (q_4) edge [loop right]  node {a} (   )
+        edge [bend right]  node {b} (r_1)
+  (q_5) edge [bend left]  node {a} (r_2)
+        edge [bend right]  node {a} (q_4)       
+   (q_3)     edge              node {a} (q_2);
+\end{tikzpicture}
+\caption{\label{Figau2} Exemple d'automate fini élémentaire non déterministe.}
+\end{minipage}
+\end{figure}
+\end{Ex}
+\begin{Def}\label{remaut1} 
+ L'automate $\mathcal{A}$ est dit déterministe si $I$ est réduit à un seul élément (c'est-à-dire un seul état initial $q_{0}$) et  pour tous $p,q,q'\in Q$ et $a\in\Sigma$,
+si  $(p,a,q),(p,a,q')\in R$, alors $q = q'$ ce qui signifie que $\delta$ est une fonction.
+\end{Def}
+Ainsi, si $\mathcal{A}$ est un automate fini déterministe, il existe une fonction $\delta : Q \times \Sigma \longrightarrow Q$ telle que pour  $(p,a,q)\in R, \delta (p,a) = q.$
+On écrit alors  $\mathcal{A}= (Q,\Sigma,q_{0},F,\delta).$ 
+\begin{Ex}\label{exaut1}\mbox{ }\\
+\begin{figure}[!htb]
+\begin{minipage}[c]{.01\linewidth}
+ \centering
+ 
+ \end{minipage}
+ \hfill
+ \begin{minipage}[c]{.96\linewidth}
+ \centering
+ \begin{tikzpicture}[shorten >=1pt,node distance=2cm,initial text=,auto]
+  \tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+  \node[state,initial]   (s)                      {$q_{0}$};
+  \node[state,accepting] (q_1) [below left of=s]  {$q_1$};
+  \node[state]           (q_2) [below of=q_1]     {$q_2$};
+  \node[state,accepting] (r_1) [below right of=s] {$r_1$};
+  \node[state]           (r_2) [below of=r_1]     {$r_2$};
+
+  \path[->]
+  (s)   edge              node {a} (q_1)
+        edge              node {b} (r_1)
+  (q_1) edge [loop left]  node {a} (   )
+        edge [bend left]  node {b} (q_2)
+  (q_2) edge [loop left]  node {b} (   )
+        edge [bend left]  node {a} (q_1)
+  (r_1) edge [loop right] node {b} (   )
+        edge [bend left]  node {a} (r_2)
+  (r_2) edge [loop right] node {a} (   )
+        edge [bend left]  node {b} (r_1);
+\end{tikzpicture}
+\caption{\label{Figau1} Exemple d'automate fini élémentaire déterministe.}
+\end{minipage}
+\end{figure}
+Dans l'automate de la figure \ref{Figau1}, on a  $I=\{q_{0}\}$,  $\Sigma = \{a,b\},$ $Q=\{q_{0}, q_{1}, q_{2}, r_{1}, r_{2}\},$  $F= \{q_{1}, r_{1}\}$ et 
+$$R=\{ (q_{0},a,q_{1}), (q_{0},b,r_{1}), (q_{1},a,q_{1}), (q_{1},b,q_{2}), (q_{2},a,q_{1}), (q_{2},b,q_{2}),(r_{1},b,r_{1})$$
+$$(r_{1},a,r_{2}), (r_{2},b,r_{1}), (r_{2},a,r_{2})\}.$$ C'est un automate déterministe.
+\end{Ex}
+Un mot $w=w_{1}w_{2}...w_{n}$, $w_{i}\in \sum$, $1\leq i \leq n$, $n\in \mathbb{N}$, est dit reconnu ou accepté par un automate fini $\mathcal{A}= \left(Q,\Sigma,I,F,R\right)$, s'il existe $q_{0}\in I$, $l\in \mathbb{N}\backslash \{0\}$, $m_{1},m_{2},...,m_{l}\in \sum$, $q_{1},q_{2},...,q_{l}\in Q$ 
+tels que 
+\begin{eqnarray}
+& &(q_{0},m_{1},q_{1}), (q_{1},m_{2},q_{2}),...,(q_{l-1},m_{l},q_{l})\in R,\\\nonumber
+& & w=m_{1}m_{2}...m_{l} \textit{ et } q_{l}\in F.
+\end{eqnarray}
+
+Le langage accepté par l'automate fini $\mathcal{A}$ est l'ensemble de tous les mots de $\sum^{*}$ acceptés par $\mathcal{A}$.
+
+Particulièrement, le langage accepté par un automate fini déterministe 
+\begin{eqnarray*}
+\mathcal{A}= (Q,\Sigma,q_{0},F,\delta) \textit{ est }\mathcal{L}(\mathcal{A}) &= & \{w\in \Sigma^{*} : \delta(q_{0},w)\in F\}.
+\end{eqnarray*}
+\end{Rem}
+
+\begin{Lem}\label{lem12023}
+Tout langage accepté par un automate fini non déterministe est accepté par un automate fini non déterministe élémentaire défini sur le même alphabet $\Sigma$. 
+\end{Lem}
+La démonstration du lemme \ref{lem12023} peut être consultée dans  \cite{RaSc}.
+\begin{Prop}\label{prop232023}
+Tout langage accepté par un un automate fini non déterministe 
+est accepté par un automate fini déterministe.
+\end{Prop}
+On retrouve la preuve de cette proposition dans \cite{Auto1} et  \cite{RaSc}.
+
+Les aspects abordés dans cette sous-section sont largement détaillés dans \cite{Auto1}, \cite{Auto2} et  \cite{RaSc}.
+\begin{spacing}{0.30}
+\subsection{Transducteur}
+\end{spacing}
+Pour mieux expliquer l'aspect calculatoire des transitions des automates que nous utilisons, dans la suite, il est impératif d'introduire la théorie de transducteur.
+\begin{Def}\label{dfb}
+Soit $E_{1}$ et $E_{2}$ deux sous-ensembles de $\Sigma$ (ou de $\Sigma^{*}$).
+ $E_{1}+E_{2}$ est la réunion des deux ensembles (c'est-à-dire $E_{1}+E_{2}=E_{1}\cup E_{2}$, en particulier si $a, b\in \Sigma^{*}$, $\{a\}+\{b\}=\{a\}\cup\{b\} $) 
+ 
+ Le produit $E_{1}E_{2}$ est le produit cartésien des ensembles $E_{1}$ et $E_{2}$ (c'est-à-dire $E_{1}E_{2}=\{m_{1}m_{2}: m_{1}\in E_{1}, m_{2}\in E_{2}\}$).
+ 
+% $E_{1}^{*}$ est l'ensemble des mots obtenus via les symboles dans $E_{1}$.
+
+\end{Def}
+\begin{Def}\label{ExprRat}
+Soit $\Sigma$  un alphabet fini. Les expressions rationnelles sur $\Sigma$ sont définies de manière inductive par:
+\begin{itemize}
+\item[(i)] $\emptyset$ et $\varepsilon$ sont des expressions rationnelles;
+\item[(ii)] tout élément $a$ de $\Sigma$ est une expression rationnelle;
+\item[(ii)] si $E_{1}$ et $E_{2}$ sont deux expressions rationnelles de $\Sigma$ alors $E_{1}+E_{2}$, $E_{1}E_{2}$, $E_{1}^{*}$ et $E_{2}^{*}$ sont des expressions rationnelles de $\Sigma$.
+
+
+L'ensemble des expressions rationnelles de $\Sigma$ est un sous-ensemble de $\Sigma^{*}$, noté $Rat\Sigma^{*}$.
+\end{itemize}
+\begin{Rem}
+Soit $E$ est une expression rationnelle sur $\Sigma$, alors $\displaystyle\underbrace{E+E+...+E}_{n\text{ termes}}=nE$ est une expression rationnelle appelée expression rationnelle sur $\Sigma$ à multiplicité $n$. En particulier $\Sigma^{*}$ et $\displaystyle\underbrace{\Sigma^{*}+\Sigma^{*}+...+\Sigma^{*}}_{n\text{ termes}}=n\Sigma^{*}$ sont des expression rationnelles.
+
+L'ensemble des expressions rationnelles sur $\Sigma$ à multiplicité dans $\mathbb{N}$ est noté $\mathbb{N}Rat\Sigma^{*}$.
+
+$\mathbb{N}Rat\Sigma^{*}$ muni respectivement des opérations d'union et de concaténation est un semi-anneau.
+
+
+$$M=\{a^{n}b^{n}: n\geq 0\}, N=\{a^{n}b^{p}: n\neq p\}$$ sont des exemples d'expressions non rationnelles car si nous prenons par exemple $a_{1}, a_{2}\in M$, avec $a_{1}=a^{n_{1}}b^{n_{1}}$ et $a_{2}=a^{n_{2}}b^{n_{2}}$, alors $$a_{1}a_{2}=a^{n_{1}}b^{n_{1}}a^{n_{2}}b^{n_{2}}\notin M.$$
+\end{Rem}
+\end{Def}
+\begin{Def}\label{trans1}
+On désigne par transducteur fini $\mathcal{T}$ la donnée d'un $6$-uplet  $(Q, \Sigma_{1}, \Sigma_{2}, I, F, R)$, où 
+ $Q$ est l’ensemble fini des états du transducteur;
+ $\Sigma_{1}, \Sigma_{2}$ deux alphabets appelés alphabets de $\mathcal{T}$; $I$ et $F$ deux sous-ensembles de $Q$ respectivement l'ensemble des états initiaux et l'ensemble des états finaux de $\mathcal{T}$; $R$  sous-ensemble de  $Q \times (\Sigma_{1} \cup \{\varepsilon\}) \times(\Sigma_{2} \cup \{\varepsilon\}) \times  Q$ est la table de transition, avec $\varepsilon$  le mot vide.
+ 
+Soit $(q,a_{1},a_{2},p)\in R$ alors il existe une transition étiquetée $(a_{1},a_{2})$ de l'état $q$ vers l'état $p$.
+\end{Def}
+Un transducteur fini peut être considéré sous deux formes selon ses applications.
+\begin{itemize}
+\item[(i)] Il peut être vu comme un automate qui génère  des paires de mots dans le  langage $\Sigma_{1}^{*}\times \Sigma_{2}^{*}$.  Dans ce cas toute transition possible d'un état $q$ à un état $p$ est pondérée par un couple de la forme $(a_{1},a_{2})$ où $a_{1}\in \Sigma_{1}$ et $a_{2}\in \Sigma_{2}$.
+
+\item[(ii)] Dans d'autres cas il est plutôt vu comme un automate qui lit un mot de  $\Sigma_{1}^{*}$ et génère des mots appartenant au langage  $\Sigma_{2}^{*}$. Dans ce cas le poids d'une transition possible d'un état $q$ à un état $p$ est de la forme $a_{1}|a_{2}$ où $a_{1}\in \Sigma_{1}$ et $a_{2}\in \Sigma_{2}$.
+$\Sigma_{1}$ et $\Sigma_{2}$ sont respectivement appelés l'alphabet d'entrée et l'alphabet de sortie.
+\end{itemize}
+\begin{Def}
+Un transducteur est dit séquentiel s’il est déterministe par rapport à son alphabet d'entrée.
+\end{Def}
+%Si $\mathcal{T}$ est un transducteur, pour tout couple de mot $(w_{1},w_{2})$ de $\Sigma_{1}^{*}\times \Sigma_{2}^{*}$ on note par $w_{1}\mathcal{T}w_{2}$ pour  signifier que $w_{1}|w_{2}$  (respectivement $(w_{1},w_{2})$) est accepté par $\mathcal{T}$.
+\begin{Def}\label{trans3}
+Un transducteur pondéré est défini par un $7-$uplet
+ $$\mathcal{T}=(Q,\Sigma_{1},\Sigma_{2},\mathbb{N},I,F,R),$$ avec $Q$ l'ensemble fini des états de $\mathcal{T}$; $\Sigma_{1}$ et $\Sigma_{2}$ ses alphabets; $I$ et $F$ sont des sous-ensembles de $\mathbb{N}^{Q}$ respectivement les ensembles des vecteurs initiaux et finaux de $\mathcal{T}$ et $R$ un sous-ensemble de $Q \times (\Sigma_{1} \cup \{\varepsilon\}) \times(\Sigma_{2} \cup \{\varepsilon\})\times \mathbb{N} \times  Q$.
+\end{Def}
+Comme tout transducteur fini non pondéré, les transducteurs pondérés peuvent être considérés aussi de deux façons.
+\begin{itemize}
+\item[(i)] Ils peuvent être considérés comme   des $\mathbb{N}$-automates
+lisant leur entrée sur deux bandes et produisant une valeur dans $\mathbb{N}$.  Dans ce cas,  si $(q, a_{1}, a_{2}, k, p)\in R$  alors le poids de la transition de $q$ à $p$ est noté $(a_{1},a_{2})|k$.
+\item[(ii)] D’autre part, un transducteur pondéré peut être considéré comme un automate sur une bande produisant un poids dans le semi-anneau $\mathbb{N}Rat\Sigma^{*}$.
+\end{itemize}
+Les notions sur les expressions rationnelles ainsi que sur les transducteurs sont  détaillées dans \cite{Amt}.
+\begin{spacing}{0.30}
+\section{Automates $\mathcal{A}_{B}$ des polynominos contenus dans un rectangle de largeur $B$}
+\end{spacing}
+
+Dans  cette section, nous proposons une famille d'automates spécifiques, notée $(\mathcal{A}_{B})_{B\geq 1}$, décrivant tous les polyominos pouvant être contenus dans un rectangle, de largeur $B$ donnée. L'étude de ces automates est détaillée dans les prochains chapitres. Les rectangles considérés sont de dimensions $B\times H$, dont $B$ et $H$ représentent respectivement la largeur et la hauteur. Dans la suite, dès que l'usage de la hauteur n'est pas nécessaire, nous utilisons le terme \emph{rectangle de type} $B$ pour désigner un rectangle de largeur $B$.
+Lorsqu'une case du rectangle est occupée par une cellule, on la colorie en bleu. 
+
+Étant donnée une ligne vide (dont toutes les cases sont sans cellules) d'un rectangle de type $B$, il y a $2^{B}$ façons d'occuper ses cases ou non (voir la figure \ref{fig22023} pour le cas $B=2$). On dit alors qu'un rectangle de type $B$ a $2^{B}-1$ lignes possibles de longueur $B$ (sans compter la ligne vide). À partir des lignes possibles d'un tel rectangle, nous construisons les états de l'automate $\mathcal{A}_{B}$. L'alphabet et les transitions entre les  états de l'automate $\mathcal{A}_{B}$ contiennent les variables utilisées pour compter l'aire, le périmètre, la hauteur et le nombre de feuilles d'un polyomino contenu dans un rectangle de type $B$.
+
+%\begin{figure}[!htb]
+%\begin{minipage}[c]{.06\linewidth}
+% \centering
+%\end{minipage}
+ %\hfill
+ %\begin{minipage}[c]{.7\linewidth}
+ %\centering
+%\begin{logicpuzzle}[rows=8,columns=12,color=cyan!100, %width=750px,scale=0.5]
+
+%\fillcell{1}{1}
+%\framepuzzle[black!50]
+%\end{logicpuzzle}
+%\caption{\label{fig12023} Rectangle de largeur $12$ et de hauteur $8$.\quad\quad}
+%\end{minipage}
+%\end{figure}
+\begin{figure}[!htb]
+\begin{minipage}[c]{.3\linewidth}
+ \centering
+
+\end{minipage}\hfill
+\begin{minipage}[c]{.2\linewidth}
+ \centering
+\begin{logicpuzzle}[rows=1,columns=2,color=cyan!100, width=750px,scale=0.5]
+
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+ \hfill
+ \begin{minipage}[c]{.2\linewidth}
+ \centering
+\begin{logicpuzzle}[rows=1,columns=2,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+
+\end{minipage}
+\begin{minipage}[c]{.2\linewidth}
+ \centering
+\begin{logicpuzzle}[rows=1,columns=2,color=cyan!100, width=750px,scale=0.5]
+
+\fillcell{2}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+ \hfill
+ \begin{minipage}[c]{.2\linewidth}
+ \centering
+\begin{logicpuzzle}[rows=1,columns=2,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{1}
+\fillcell{2}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+
+\end{minipage}
+\caption{\label{fig22023} Les lignes possibles d'un rectangle de  type $2$.\quad\quad}
+\end{figure}
+%\begin{spacing}{0.27}
+%\subsection{État, alphabet, mot et transition}
+%\subsubsection*{État}
+%\end{spacing}
+%Dans un automate $\mathcal{A}_{B}$, la notion d'\emph{état} est relative à la structure d’une ligne possible d'un rectangle de type $B$, c'est-à-dire l'agencement des cellules  se trouvant sur cette ligne, de même qu'à la structure de la ligne qui la précède (si elle n'est pas la première ligne).
+%\begin{spacing}{0.30}
+%\subsubsection*{Alphabet}
+%\end{spacing}
+%L’\emph{alphabet} de l’automate $\mathcal{A}_{B}$ est  
+%$$ \Sigma = \{0,1,w,x,y, z, z^{-1}\}$$ dont les éléments vérifient  certaines règles particulières. %Soit $\xi, \eta \in \Sigma$ on a
+%\begin{itemize}
+%\item $\xi\eta=\eta\xi$ (commutativité),
+%\item $\underbrace{\xi\xi …\xi}_{n \textit{ facteurs}} =\xi ^{n}$,
+%\item $zz^{-1}=1$,
+%\item  $\xi 1=1\xi=\xi$,
+%\item $0\xi=\xi 0=0$.
+%\end{itemize}
+%\begin{Rem}\label{remmot1}
+%Les règles que vérifient les éléments de $\Sigma$ sont dues  au fait qu’on ne s’intéresse pas à l’ordre des lettres dans les mots générés par ces derniers  par exemple, le mot $xyzxw$ correspond est égal au mot $wx^{2}yz$. 
+%\end{Rem}
+%\subsubsection*{Transition}
+%Soient $e$ et $e'$ deux états de $\mathcal{A}_{B}$.
+%\begin{Def}\label{eleta} \mbox{ }\\
+%\begin{itemize}
+%\item On désigne par transition élémentaire de $e$ à $e'$ tout monôme de Laurent de la  forme
+%$$ \lambda w^{a}x^{p}yz^{f}, \quad a,p \in \{0,1,2,...\},\quad  f\in \mathbb{Z}  \textit{ et  } \lambda\in \{0,1\}.$$  $\lambda w^{a}x^{p}yz^{f}$ est égal à $0$ (mot nul) si $\lambda =0$ et à $w^{a}x^{p}yz^{f}$ si $\lambda =1$.  
+
+%Notons que $\lambda=0$  si la transition de $e$ vers $e'$ est impossible.
+
+%\item Les différentes transitions possibles entre deux états $e$ et $e’$ sont donc tous les polynômes de Laurent de la forme  
+%$$\displaystyle\sum_{i=1}^{n_{t}}\mu_{i}\lambda_{i}w^{a_{i}}x^{p_{i}}yz^{f_{i}}$$
+%où $\lambda_{i}w^{a_{i}}x^{p_{i}}yz^{f_{i}}$ , $1\leq i\leq n_{t}$ représentent les différentes transitions élémentaires de l’état $e$ à $e’$ avec $\mu_{i}\in \mathbb{N}$, coefficient déterminant le nombre de transitions de mêmes expressions et  $n_{t}$ le nombre total de mots d'expressions différentes qu'on peut avoir lorsqu'on passe de $e$ à $e'$.
+%\end{itemize}
+%\end{Def}
+\begin{spacing}{0.27}
+\section{Partition non croisée}
+\end{spacing}
+Nous rappelons, dans cette section, la définition d'une partition non croisée ainsi qu'un résultat fondamental sur cette notion. Les partitions non croisées sont, par la suite, utiles dans la construction et l’énumération des états des automates $\mathcal{A}_{B}$.
+\begin{Def}\label{par202}
+Soit $E$ un ensemble non vide. Une partition de $E$ est un ensemble de parties non vides de $E$ deux à deux disjointes et dont la réunion est $E$. 
+\end{Def}
+\begin{Def}\label{partcr1}
+Soit $n, k$ deux entiers naturels et $\mathcal{P}=\{P_{1}, P_{2},...,P_{k}\}$ une partition de l'ensemble $\{1,2,...,n\}$. $\mathcal{P}$ est dite non croisée si étant données  $ P_{i}$ et $P_{j}\in \mathcal{P}$ telles que $i\neq j$, pour $a,b\in P_{i} $ et $c,d\in P_{j}$ on ne peut pas avoir $a<c<b<d$.
+\end{Def}
+\begin{Ex}\label{exparcr1}
+Soit $n=5$,  $$\{\{1,2,3\},\{4,5\}\}, \quad \{\{1,4,5\},\{2,3\}\}$$ sont deux partitions non croisées de $\{1,2,3,4,5\}$ par contre  $\{\{1,3,5\},\{2,4\}\}$ en est une partition croisée.
+\end{Ex}
+\begin{Theo}\label{cat}
+Le nombre de partitions non croisées de $\{1,2,...,n\}$ est égal au nombre de Catalan
+\begin{eqnarray}
+C_{n} & = & \dfrac{(2n)!}{n!(n+1)!}. 
+\end{eqnarray}
+\end{Theo}
+ Les détails de la preuve de ce théorème peuvent être consultés dans \citep{Kre}.
+ 

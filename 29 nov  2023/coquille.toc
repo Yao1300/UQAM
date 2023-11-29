@@ -1,0 +1,5 @@
+\babel@toc {french}{}
+\vspace {1.5ex}
+\contentsline {chapter}{\MakeUppercase {Liste des tableaux}}{iii}%
+\vspace {1.5ex}
+\contentsline {chapter}{\MakeUppercase {LISTE DES FIGURES}}{iv}%

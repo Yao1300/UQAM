@@ -1,0 +1,225 @@
+\chapter{Aspects alogorithmiques des formules portant sur les automates $A_{B}$ et $A_{FB}$}
+
+Dans ce chapitre nous allons proposer les algorithmes permettant d'implémenter quelques formules-clés établies dans les chapitres II et III. 
+\section{Calcul du périmètre d'un état}
+Pour un état $e$ donné, nous décrivons l'algorithme nommé \Call{PerimetreEtat}{} permettant de calculer son périmètre. Le paramètre $P$ désigne le périmètre en question. La ligne de $e$ est un tableau d'entiers (binaires). Si $n = e.longueur$ c'est-à-dire la longueur de l'état $e$, alors cet algorithme a une complexité temporelle de $\bigo(n)$.
+La stratégie pour calculer $P$ est la suivante:
+\begin{itemize}
+\item Si $e$ est un état de longueur $1$, elle est donc soit une cellule ou bien un état vide de longueur $1$.  Dans ce cas, $P= 4*e.ligne(0)$. Cette valeur vaut $4$ si $e$ est une cellule et $0$ s'il est un état vide.
+\item Si la ligne de $e$ est de longueur $2$ alors $P=4*e.ligne(0)-2*(e.ligne(0)*e.ligne(1)) +   4*e.ligne(1)$   ce qui équivaut à la somme des périmètres des deux cases (dont chacun peut valoir $0$ ou $4$), tout en retranchant d'éventuels côtés  qui se touchent. Si les deux cases sont toutes deux des cellules alors le terme $2*(e.ligne(0)*e.ligne(1)) $ vaut donc $2$ correspondant ainsi au côté vertical gauche de la cellule de gauche et au côté vertical  droit de la cellule de droite qui sont internes au polyominos.
+\item Si $e$ est de longueur supérieure ou égale à $3$, on applique le processus expliqué dans le cas précédent: $e.longueur -1$ précédentes cases tout en ajoutant le périmètre de la dernière case qui vaut $4*e.ligne(e.longueur-1)$.
+\end{itemize}
+\begin{algorithmic}[1]
+ \Function{PerimetreEtat}{$e$: etat}: naturel
+   \State $P\leftarrow 0$:naturel
+    \If{$(e.longueur=1)$}
+    	\State $P= 4*e.ligne(0)$
+          \Else
+    	     \If{$e.longueur=2$}
+    		   \State $P=4*e.ligne(0)-2*(e.ligne(0)*e.ligne(1)) +   4*e.ligne(1)$
+    	\Else
+    		\For{ $i$ allant de  $0$ à $e.longueur -2$}
+                 \State $P= P+4*e.ligne(i)-2*(e.ligne(i)*e.ligne(i+1))$
+                 
+            \EndFor
+            \State $P=P+ 4*e.ligne(e.longueur-1)$  
+           \EndIf	
+    \EndIf
+         \State \Return $P$
+   \EndFunction
+  \end{algorithmic}
+
+
+  \section{Nombre de périmètre échangé lors d'une transition d'un état à un autre}
+  La variation  du périmètre lors de la transition d'un état $e$ à un état $e'$, comme le stipule la formule   de la proposition \ref{prop5}, correspond au périmètre de l'état $e'$ auquel on retranche d'éventuel côtés horizontaux  qui se touchent.
+  
+  On considère deux états $e$ et $e’$ de tels que la transition de $e$ à $e’$ soit possible. On sait que $e.longueur \geq e’.longueur $. Soit $n$ la longueur de $e$ et $n’$ celle de $e’$. Nous posons $e.ligne$ et $e’.ligne$ comme étant tous deux des tableaux de longueur $n$.  Soit $i_{1}$ un entier naturel tel que la ligne de $e’$  soit  réellement étendue de $i_{1}$ à  $i_{1}+n’-1$ en la repérant à la ligne de $e$ (qui s’étend de $1$ à $n$). On  désigne par  \Call{PerimetreTransit}{} la fonction nous permettant le calcul du périmètre échangé au cours de la transition de $e$ à $e’$ qui prend argument deux états et  retourne l’entier $P$.
+
+\begin{algorithmic}[1]
+ \Function{PerimetreTransit}{$e$: état, $e’$: état}:naturel
+       \State $P$: naturel 
+       \State $P\leftarrow$  \Call{PerimetreEtat}{e’}
+        \For{ $i$ allant de $i_{1}$ à $i_{1}+n’-1$}
+            \State $P\leftarrow P-2*\left( e.ligne(i)*e’.ligne(i)\right)$
+        \EndFor
+         \State \Return $P$
+   \EndFunction
+  \end{algorithmic}
+ Le terme $ e.ligne(i)*e’.ligne(i)$ qu’on retranche  s’explique de la même manière que dans le cas de \Call{PerimetreEtat}{} à la différence qu’ici, les côtés concernés sont horizontaux.
+Cet algorithme s’exécute en $\bigo(n)$ au pire cas.
+\section{Nombre de feuilles d'un état}
+\begin{spacing}{0.30}
+\subsection{Nombre de feuilles d'un état initial}
+\end{spacing}
+Le nombre de feuilles d'un état dépend du fait qu'il est un état initial ou un état intermédiaire. Si un état $e$ est initial, cela signifie qu'aucune de ses composantes connexes n'est connectée par le haut. Ce qui permet de conclure que le nombre de ses feuilles n'est rien d'autre que le nombre de ses composantes connexes ayant au moins $2$ cellules  multiplié par deux puisque chacune de ces types de composantes connexes a deux cellules de degré $1$, qui sont à ses extrémités. Pour  calculer ce nombre, il suffit de dénombrer les composantes connexes à une seule cellule de l'état  $e$ concerné. Ce calcul est décrit dans la fonction \Call{CompoUnitCel}{}.  Nous utiliserons le paramètre $nc_{0}$ pour désigner le nombre de composantes connexes à une seule cellule. Soit $n$ tel que $n=e.longueur$ et $Bin$ le tableau d'entiers binaires mis pour $e.ligne$ i.e. $Bin =e.ligne$.
+
+\begin{algorithmic}[1]
+ \Function{CompoUnitCel}{$e$: état}: entier
+   \State  $nc_{0}$: entier
+   \If{$n=1$}
+      \State  $nc_{0}\leftarrow Bin(0)$
+   \EndIf  
+   \If{$n=2$}
+      \State $nc_{0}\leftarrow Bin(0)*\left(1-Bin(0)*Bin(1)\right)+ Bin(1)*(1-Bin(0)*Bin(1))$
+   \EndIf
+   \If{$e.longueur >2$}
+      \State $nc_{0}\leftarrow Bin(0)*\left(1-Bin(0)*e.Bin(1)\right)+$   
+      \State $ Bin(n -1)*(1-Bin(n-2)*Bin(n-1))$
+      \For{$i$ allant de $1$ à $n-1$}
+      \State $nc_{0}\leftarrow  nc_{0}+Bin(i)*(1-\max(Bin(i-1)*Bin(i),Bin(i)*B(i+1)))$
+      \EndFor
+   \EndIf
+    \State \Return $nc_{0}$
+ \EndFunction
+\end{algorithmic}
+
+La règle de calcul de $nc_{0}$ est la suivante:
+\begin{itemize}
+\item Si $n=1$, alors il a soit une cellule (qui est alors de degré $0$) soit il est un état nul et dans ce cas la valeur de $nc_{0}$ correspond à l'unique valeur, $Bin(0)$, du tableau $Bin$ (voir ligne $4$).
+\item Si $n=2$ alors on a la formule de la ligne $7$ qui est constituée de deux termes. Le terme  $Bin(0)*\left(1-Bin(0)*Bin(1)\right)$ par exemple s'explique comme suit: $Bin(0)$ nous permet de savoir si la case $0$ contient de cellules ou non. Ainsi, si cette case ne contient pas de cellule  $Bin(0)=0$ et donc le terme  $Bin(0)*\left(1-Bin(0)*Bin(1)\right)$  n'influe pas le résultat final. Dans le cas où cette case contient de cellule ($Bin(0)=1$) alors on s’intéresse au  facteur $\left(1-Bin(0)*Bin(1)\right)$ qui nous dit, si à droite de la cellule de la case $B(0)$, il y a une cellule ou pas. Dans le cas affirmatif, $Bin(0)=Bin(1)=1$ et donc $(1-Bin(0)*Bin(1))=0$ de même que le second terme de $nc_{0}$ ( $1-Bin(0)*Bin(1)$ ) est un facteur commun au deux termes) ce qui revient à dire que l'unique composante connexe de $e$ est constituée de deux cellules dont chacune a pour degré $1$. Dans le cas contraire c'est-à-dire $1-Bin(0)*Bin(1)=1$, ce qui signifie qu'une seule des deux cases de $Bin$ contient une cellule et $nc_{0}$ vaut automatiquement $1$. Pour le cas $Bin(0)=Bin(1)=0$ ($e$ est un état vide de longueur $2$), $nc_{0}$ est nul.
+\item Si $n>2$, les lignes $10$ et $11$  nous donnent les informations aux deux extrémités de la ligne de $e$. À la ligne $13$, $Bin(i)*(1-\max(Bin(i-1)*Bin(i),Bin(i)*B(i+1)))$ est une généralisation des termes expliqués dans le volet précédent; c'est le cas où la case $1<i<n-1$. $Bin(i)$ nous dit toujours si une cellule se trouve dans la $i^{eme}$ case de $Bin$ ou non. Dans le cas contraire, cette expression est nulle et n'intervient pas dans la somme finale. Dans le  cas affirmatif,  si l'expression $\max(Bin(i-1)*Bin(i),Bin(i)*B(i+1))=0$, alors la cellule en question n'a ni cellule à sa gauche ni à sa droite et ainsi $Bin(i)*(1-\max(Bin(i-1)*Bin(i),Bin(i)*B(i+1)))=1$, sinon elle a au moins une cellule à l'un de ses côtés et $Bin(i)*(1-\max(Bin(i-1)*Bin(i),Bin(i)*B(i+1)))=0$.  
+\end{itemize}
+Les opérations dans cet algorithme se font aussi en $\bigo(n)$.
+
+Si $n_{c}$ est le nombre de composantes connexes, dont la formule est démontrée dans la proposition \ref{prop12}, le calcul du nombre, $n_{f}$, de feuilles de l'état initial $e$  se déduit facilement dès qu'on a la valeur de $nc_{0}$ qui n'est rien d'autre que $2*(n_{c}-n_{c_{0}})$. Nous désignons par \Call{NbFeuilleEtatUnit}{} la fonction qui permet d'obtenir le nombre de feuilles d'un état pouvant être initial.
+\begin{spacing}{0.30}
+\subsection{Nombre de feuilles d'un état interne}
+\end{spacing}
+La formule du nombre de feuilles  d'un état non initial est établie dans la proposition \ref{propdec131} du chapitre $2$. La procédure consiste à  considérer au départ l'état $e$ comme  étant initial. Dans ce cas, nous utilisons dans un premier temps la fonction \Call{NbFeuilleEtatUnit}{} pour calculer le nombre $n_{f_{1}}$ de feuilles qu'il aurait pu  avoir. Ensuite, nous définissons deux variables $n_{0\rightarrow 1}$ et $n_{1\rightarrow 2}$ qui désignent respectivement  le nombre de cellules de $e$ (vu initialement comme étant état initial) dont les degrés sont passés chacun de $0$ à $1$ et le nombre de celles dont les degrés sont passés chacun de $1$ à $2$ suite à sa transition avec l'état qui le précède. Cette fonction  nommée \Call{NbFeuilleEtat}{}, prend en argument un état $e$ et retourne l'entier naturel $n_{f}$ qui est le nombre de feuille de cet état. Dans cette fonction, $e$ est matérialisé par  les tableaux $Bin$ et $Mot$ qui désignent respectivement sa ligne  et le tableau dont les cases sont des symboles du mot de de l'alphabet $\{0,1,2,3\}$ qui  lui est associé. On suppose que l'état qui précède $e$ est l'état $e'$  dont la ligne est donnée par le tableau $Bin'$. Tous les tableaux dans cet algorithme sont supposés de taille $e'.longueur$ et on désigne par $i_{0}$, le numéro (repéré par rapport à la numérotation de la ligne de $e'$) à partir duquel commence normalement la ligne de $e$. On pose $n=e.longueur$.
+\begin{algorithmic}[1]
+ \Function{NbFeuilleEtat}{$e$: état}: naturel
+ \State $i_{0}, n_{f_{1}}, n_{f}, n_{0\rightarrow 1}, n_{1\rightarrow 2}$: naturel
+ \State $n_{f_{1}} \leftarrow $ \Call{NbFeuilleEtatUnit}{$e$}
+ \State $n_{0\rightarrow 1} \leftarrow 0$, $n_{1\rightarrow 2}\leftarrow 0$
+ \For{$i$ allant de $i_{0}$ à $n+i_{0}-1$}
+      \State $n_{0\rightarrow 1} = n_{0\rightarrow 1} + Bin(i)*Bin'(i)*\min(1,Mot(i), \vert 2-Mot(i)\vert,\vert 3-Mot(i)\vert)$
+       \State $n_{1\rightarrow 2} = n_{0\rightarrow 1} + Bin(i)*Bin'(i)*\min(1,Mot(i), \vert 1-Mot(i)\vert,\vert 3-Mot(i)\vert)$
+ \EndFor
+ \State $n_{f} \leftarrow n_{f_{1}} - n_{1\rightarrow 2}+ n_{0\rightarrow 1} $
+  \State \Return $n_{f}$
+ \EndFunction
+\end{algorithmic}
+Dans le calcul de $n_{0\rightarrow 1}$ et celui de $n_{1\rightarrow 2}$, si le produit $Bin(i)*Bin'(i)=0$ cela signifie que la case $Bin(i)$  ou bien la case $Bin'(i)$ ne contient aucune cellule ce qui signifie que rien ne change sur le degré de  $Bin(i)$. Si  $Bin(i)*Bin'(i)=1$, cela signifie que
+la cellule de la case $Bin(i)$  a au-dessus d'elle une cellule ( c'est-à-dire que la case $Bin'(i)$ contient de cellule). Donc son degré n'est pas en fait celui  qui lui était attribué en supposant que $e$ est initial. Ainsi 
+\begin{itemize}
+\item si son degré était supposé $0$ il vaut en réalité $1$ il faut donc compter cette cellule parmi les feuilles de $e$. Comme $Mot(i)=1$ alors $\min(1,Mot(i), \vert 2-Mot(i)\vert,\vert 3-Mot(i)\vert)=1$ ce qui augmente la valeur de $n_{0\rightarrow 1}$ de $1$.
+\item De même, si son degré était supposé $1$ il vaut en réalité $2$ il faut donc retrancher cette cellule parmi les feuilles de $e$ puisqu'elle n'est pas en réalité une feuille de $e$. Comme $Mot(i)=2$ alors $\min(1,Mot(i), \vert 1-Mot(i)\vert,\vert 3-Mot(i)\vert)=1$ ce qui augmente la valeur de $n_{1\rightarrow 2}$ de $1$.
+\end{itemize}
+ Ainsi, $n_{1\rightarrow 2}$ est d'après tout ce qui précède le nombre de cellules comptées par erreur comme étant les feuilles de $e$ parmi les $n_{f_{1}}$ feuilles si $e$ était initial. $n_{0\rightarrow 1}$ est par contre les feuilles de $e$ qui n'ont pas été comptées en supposant $e$ initial.  
+
+La complexité de \Call{NbFeuilleEtat}{} est aussi $\bigo (n)$.
+
+\section{Nombre de feuilles échangées lors d'une transition}
+Considérons deux états $e$ et $e'$ d'un automate  $\mathcal{A}_{B}$ (respectivement $\mathcal{A}_{FB}$) tels que la transition de $e$ à $e'$ soit possible. La variation du nombre de feuilles de cette transition est une valeur algébrique donnée dans la proposition \ref{propdec132}. Cette variation du nombre de feuilles dépend  de la position $i_{0}$ de départ de la ligne de l'état de $e'$ par rapport à la ligne de $e$. Et pour les deux états $e$ et $e'$ on peut avoir plusieurs possibilités $i_{0}$. La proposition \ref{propdec132} tient donc compte d'une seule de ces possibilités c'est-à-dire pour une valeur de $i_{0}$ fixée. Nous expliquons ici le fonctionnement de l'algorithme  qui a permis l'établissement de cette formule. Pour ne pas alourdir les notations, les lignes de $e$ et $e'$ sont respectivement $\alpha$ et $\alpha'$ et les mots de l'alphabet $\{0,1,2,3\}$ associés seront respectivement $m$ et $m'$ tous considérés comme étant des tableaux de  taille $e.longueur$. Comme précédement en notant $n= e'.longueur$, les valeurs $\alpha'_{i}$ et $m'_{i}$ sont nulles $0\leq i<i_{0}$ et $n+i_{0}\leq i \leq e'.longueur-1$. Si $n_{f'}$ est le nombre de feuilles de $e'$, donnée par l'une des fonctions de la section précédente, la variation $f$ du nombre de feuilles est donnée par 
+\begin{eqnarray*}
+& & f  =  n_{f'}-\\\nonumber
+ & &\sum_{i=i_{0}}^{n+i_{0}-1}\alpha_{i}\alpha'_{i}\min\{1,m_{i} +\alpha_{i}\alpha'_{i},\vert 1-m_{i}-\alpha_{i}\alpha'_{i}\vert, \vert 3-m_{i}-\alpha_{i}\alpha'_{i}\vert,\vert 4-m_{i}-\alpha_{i}\alpha'_{i}\vert\}\nonumber\\
+ & & +\nonumber\\\nonumber
+ & &\sum_{i=i_{0}}^{n+i_{0}-1}\alpha_{i}\alpha'_{i}\min\{1,m_{i} +\alpha_{i}\alpha'_{i},\vert 2-m_{i}-\alpha_{i}\alpha'_{i}\vert, \vert 3-m_{i}-\alpha_{i}\alpha'_{i}\vert,\vert 4-m_{i}-\alpha_{i}\alpha'_{i}\vert\}.\\
+ \end{eqnarray*} 
+ Les termes $\alpha_{i}\alpha'_{i}$ ont la même signification que  $Bin(i)*Bin'(i)$ dans la sous-section précédente. La variation du nombre de feuilles lors de cette transition correspond en fait à un ajout du nombre de feuilles de $e'$ conditionné par le fait que certaines feuilles de $e'$ voient leur degré augmenter de $1$ (donc ne sont plus des feuilles) alors que certaines de ses cellules de degré $0$ verront leur degré augmenter de $1$ ( feuilles ). Ces trois situations sont respectivement matérialisées par $n_{f'}$ et les deux sommations dans l'ordre. 
+ 
+ Dans les deux dernières sommations, si $\alpha_{i}\alpha'_{i}=1$ alors il y a un changement de degré de la cellule $\alpha_{i}$ de $e$.
+ \begin{itemize}
+ \item Si $m_{i}=1$ avant la transition alors 
+ $$\min\{1,m_{i} +\alpha_{i}\alpha'_{i},\vert 1-m_{i}-\alpha_{i}\alpha'_{i}\vert, \vert 3-m_{i}-\alpha_{i}\alpha'_{i}\vert,\vert 4-m_{i}-\alpha_{i}\alpha'_{i}\vert\}=1$$ alors que 
+ $$\min\{1,m_{i} +\alpha_{i}\alpha'_{i},\vert 2-m_{i}-\alpha_{i}\alpha'_{i}\vert, \vert 3-m_{i}-\alpha_{i}\alpha'_{i}\vert,\vert 4-m_{i}-\alpha_{i}\alpha'_{i}\vert\}=0$$ donc une perte feuille.
+ \item Si $m_{i}=0$ avant la transition alors 
+ $$\min\{1,m_{i} +\alpha_{i}\alpha'_{i},\vert 1-m_{i}-\alpha_{i}\alpha'_{i}\vert, \vert 3-m_{i}-\alpha_{i}\alpha'_{i}\vert,\vert 4-m_{i}-\alpha_{i}\alpha'_{i}\vert\}=0$$ alors que 
+ $$\min\{1,m_{i} +\alpha_{i}\alpha'_{i},\vert 2-m_{i}-\alpha_{i}\alpha'_{i}\vert, \vert 3-m_{i}-\alpha_{i}\alpha'_{i}\vert,\vert 4-m_{i}-\alpha_{i}\alpha'_{i}\vert\}=1$$ donc un gain de feuille.
+\item pour d'autres valeur de $m_{i}$ i.e. $2,3$, 
+$$\min\{1,m_{i} +\alpha_{i}\alpha'_{i},\vert 1-m_{i}-\alpha_{i}\alpha'_{i}\vert, \vert 3-m_{i}-\alpha_{i}\alpha'_{i}\vert,\vert 4-m_{i}-\alpha_{i}\alpha'_{i}\vert\}=0$$ et
+ $$\min\{1,m_{i} +\alpha_{i}\alpha'_{i},\vert 2-m_{i}-\alpha_{i}\alpha'_{i}\vert, \vert 3-m_{i}-\alpha_{i}\alpha'_{i}\vert,\vert 4-m_{i}-\alpha_{i}\alpha'_{i}\vert\}=0$$.
+ \end{itemize}
+ D'où la formule de $f$. Cet algorithme s'implémente presque de la même façon que \Call{NbFeuilleEtat}{}.
+ 
+ \section{Décomposition en composantes connexes}
+Étant donné un état $e$ de longueur $B$, $1\leq  B$ de $\mathcal{A}_{FB}$, nous proposons un algorithme expliquant la dislocation  de ce dernier en ses différentes composantes connexes. La ligne de l'état est considérée comme un tableau de taille $B$. On suppose que $e$ a $n_{c}$ composantes connexes et $n_{c_{h}}$ son nombre de composantes connexes  par le haut. Dans un premier temps nous allons proposer une fonction $\Call{ComposantesEtat}{}$  en $\mathcal{O}(B^{2})$  qui prend en argument un état et renvoie une matrice $2D$ dont les lignes représentent les composantes connexes de l'état passé en argument. Dans cette fonction, on va utiliser un tableau double $Composante$ de taille $n_{c}\times B$ dont les lignes représentent les composante connexes de $e$ dans l'ordre de numérotation. Ensuite la fonction $\Call{ComposantesConnectHaut}{}$ qui prend  en argument un état et renvoie la matrice $2D$ , $Composanteh$ de taille  $n_{c_{h}}$, dont les lignes  représentent les composantes connexes  par le haut dudit état. Dans la fonction $\Call{ComposantesConnectHaut}{}$ on fera appel à $\Call{ComposantesEtat}{}$. 
+\begin{algorithmic}[1]
+      \Function{ComposantesEtat}{$e$: etat}:  matrice $2D$  de binaires
+       \State $Ligne$: tableau de binaire (ligne de $e$)
+       \State $i,j$: naturel
+       \State $Composante$: matrice $2D$ de taille $n_{c}\times B$
+       \State $i\leftarrow 0$, $j\leftarrow 0$
+       \State On initialise $Composante$ à $0$
+       \While{$i<n_{c}$ }
+            \While{$(j<B-2$ $)\wedge$ $(Ligne(j)\neq 0 \vee Ligne(j+1)\neq 1) $}
+                \If{$Ligne(j)\neq 0$} 
+                       \State $Composante(i,j)\leftarrow Ligne(j)$
+                \EndIf
+                 \State$j\leftarrow j+1$
+           \EndWhile
+           \State $i\leftarrow i+1$
+       \EndWhile
+       \If{$Ligne(B-1)=1$}
+              \State $Composante(n_{c}-1,B-1)=Ligne(B-1)$
+       \EndIf
+        \State \Return $Composante$
+   \EndFunction
+  \end{algorithmic}
+  
+  D'après les parties  précédentes, une composante connexe par le haut $cp_{i}$  à $n_{i}$ composantes connexes  d'un état $e$ est notée sous la  forme $\{k_{1_{i}}, k_{2_{i}},...,k_{n_{i}}\}$ où chaque entier $k_{j_{i}}$ $1\leq j\leq n_{i}$ est un entier naturel représentant une des composantes connexes qui la constituent et $k_{1_{i}}<k_{2_{i}}<...<k_{n_{i}}$. Nous supposons que l'indice $i$, $0\leq i\leq n_{c_{h}}-1$, suit l'ordre  selon lequel sont listées les composantes connexes  par le haut de $e$. Pour écrire la fonction \Call{ComposantesConnectHaut}{} nous  considérerons chaque composante connexe  $cp_{i}$ de l'état $e$ comme étant une structure dont les instances sont son \emph{nom} et la \emph{liste} de ses composantes connexes avec $cp_{i}.nom=i$  et $cp_{i}.liste=\{k_{1_{i}}, k_{2_{i}},...,k_{n_{i}}\}$. Cet algorithme retourne le tableau $CompHaut$ de taille $n_{c_{h}}\times B$ dont chacune des lignes  représente une composante connexe par le haut de $e$. L'idée dans cette fonction est d'enregistrer sur chaque ligne de $CompHaut$ toutes les cellules des composantes connexes de chaque composante connexe par le haut $cp_{i}$ de l'état $e$  tout en respectant leur position c'est-à-dire  pour une position $j$ donnée, $CompHaut(i,j)=1$ s'il y a de cellule en cette position et $CompHaut(i,j)=0$ sinon. Si $cp_{i}.liste=\{k_{1_{i}}, k_{2_{i}},...,k_{n_{i}}\}$
+  $$CompHaut(i,j)=Comp(k_{1_{i}},j)+Comp(k_{2_{i}},j) +...+Comp(k_{n_{i}},j)$$
+ qui ne dépasse pas $1$ car les composantes connexes sont disjointes deux à deux. 
+  \begin{algorithmic}[1]
+      \Function{ComposantesConnectHaut}{$e$: etat}: tableau double de binaires
+      \State $Comp \leftarrow $ \Call{ComposantesEtat}{$e$}
+      \State $CompHaut$: tableau de taille $n_{c_{h}}\times B$ nul au départ
+      \For{$i$ allant de $0$ à $n_{c_{h}}-1$}
+         \For{$j$ allant de $0$ à $B-1$}
+               \For{ $s$ allant de $0$ à $cp_{i}.liste.longueur-1$ }
+                   \State $CompHaut(i,j) = CompHaut(i,j) +Comp(cp_{i}.liste(s),j) $
+               \EndFor
+         \EndFor
+      
+      \EndFor
+      
+    \State \Return $ CompHaut$
+   \EndFunction
+  \end{algorithmic}
+  
+  Cet algorithme est en $\bigo (B^{2})$  car tout d'abord les lignes $2$ et $3$ sont en $\bigo (B^{2})$  chacune. Les lignes $5$  à $9$  sont en $\bigo( cp_{i}.liste.longueur\times B)$ or $$\displaystyle \sum_{0\leq i\leq n_{c_{h}}-1}(cp_{i}.liste.longueur) = n_{c}\leq B.$$ Ainsi les lignes allant de $4$ à $10$ sont en $\bigo (B^{2})$ au pire cas. On déduit que alors que \Call{ComposantesConnectHaut}{} est en $\bigo (B^{2})$ au pire cas.
+ \section{Composante connexe}
+ Dans la définition \ref{defchp3711}  une transition élémentaire d'un état $e_{i}$ à un état $e_{j}$ dans le  cadre de l'automate $\mathcal{A}_{FB}$ est donnée par  \begin{eqnarray*}
+t_{ij} = w^{a}x^{p}y^{h}z^{f}\zeta^{c},
+\end{eqnarray*}
+où $a$, $p$, $h$ et $f$ représentent toujours les mêmes paramètres que dans le cas de l'automate $\mathcal{A}_{B}$ et $c$ le nombre de composantes connexes de la forêt de polyominos.
+
+ Nous donnons dans cette section la fonction \Call{CompConnexe}{} permettant le calcul de $c$. Cette fonction prend en argument deux états $e$ et $e'$ et retourne $c$. Nous allons tout d'abord écrire la fonction \Call{EnConnexion}{} qui étant données deux composantes connexes  par le haut $cp$ et $cp'$ appartenant respectivement à $e$ et $e'$ nous dit si les deux se touchent. $cp$ et $cp'$ sont vues comme étant des tableaux de binaires de tailles respectives $e.longueur=n$ et $e'.longueur=n'$. On va repérer   $cp'$ par rapport à $cp$ avec $i'_{0}$ le numéro de la première case de $cp'$ i.e.
+ $$ cp   =\alpha_{1}\alpha_{1}...\alpha_{n} \textit{ et } cp' =\alpha'_{i'_{0}}\alpha'_{i'_{0}+1}...\alpha'_{n'+i'_{0}-1}.$$
+
+\begin{algorithmic}[1]
+      \Function{EnConnexion}{$cp$, $cp'$: tableau de binaires}: booléeen
+         \State $valeur\leftarrow 0$: naturel
+         \State $EstVrai\leftarrow (valeur>0)$: booléen 
+          \For{$i$ allant de $i_{0}$ à $n'+i_{0}-1$ }
+             \State $valeur\leftarrow valeur + \alpha_{i}*\alpha'_{i} $
+          \EndFor
+      \State \Return $EstVrai$
+   \EndFunction
+  \end{algorithmic}  
+ \Call{EnConnexion}{} est en $\bigo (B)$ au pire cas.
+ 
+ Dans la fonction \Call{CompConnexe}{}, nous fixons chaque composante connexe par le haut $cp'$ de $e'$ et parcourons l'ensemble de composantes connexes  par le haut de $e$ en faisant appel à \Call{EnConnexion}{} pour vérifier si $cp'$  touche certaines parmi elles. Nous notons respectivement  par $e.cph$ et $e'.cph$ les tableaux de composantes connexes  par le haut de $e$ et $e'$ et de tailles respectives $n_{c_{h}}$ et $n_{c'_{h}}$.
+ \begin{algorithmic}[1]
+  \Function{CompConnexe}{$e$: etat, $e'$: etat}: entier
+   \State $c, tempo$: entier
+   \State $c\leftarrow 0$
+    \For{$i$ allant de $0$ à $(n'_{c_{h}}-1)$}
+         \State $tempo \leftarrow 1$
+         \For{$j$ allant de $0$ à $(n_{c_{h}}-1)$}
+             \If{\Call{EnConnexion}{}$(e'.cph(i),e.cph(j))$}
+                  \State $tempo \leftarrow tempo -1$
+             \EndIf
+         
+         \EndFor
+         \State $c\leftarrow c + tempo$
+    \EndFor
+   \State \Return $c$
+  \EndFunction
+ \end{algorithmic}  
+ L'algorithme \Call{CompConnexe}{} est en $\bigo(B^{3})$ au pire cas.\\
+  
+  
+  
+  Nous avons à travers ce chapitre non seulement donné des méthodes simples permettant d'appliquer certaines formules fondamentales établies dans les deux chapitres précédents mais  aussi donné  leur démonstration d'une manière  plus concrète. Plusieurs de ces algorithmes ont été implémentés en langage C++ dont quelques exemples d'exécutions peuvent être consultés dans l'annexe associé à ce document.

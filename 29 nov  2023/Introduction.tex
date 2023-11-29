@@ -1,0 +1,37 @@
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{INTRODUCTION}
+ \pagenumbering{arabic} 
+L’étude des polyominos a une longue histoire, remontant au début du $20^{e}$ siècle, mais ils ont été popularisés grâce à \cite{SWC1,SWC2}, puis par Martin Gardner dans ses chroniques  parus dans Scientific American intitulés \og Mathematical Games\fg{} \cite{MarG} et, enfin, par David Klarner dans l'article \cite{K1-Ri1}. Ils constituent désormais un sujet populaire en mathématiques récréatives et ont également suscité l'intérêt des mathématiciens, des physiciens, des biologistes et des informaticiens.
+
+
+L'un des problèmes fondamentaux considérés concernant les polyominos est la détermination de leur nombre en fonction de leur aire. Bien qu'il y ait eu, ces dernières années, quelques progrès dans des ouvrages portant sur l’énumération des polyominos, notamment dans \cite{De-Du}, une formule facilement calculable reste en suspens. L'énumération des polyominos dépend  de certains paramètres qui les caractérisent parmi lesquels on peut citer entre autres leur aire et leur périmètre. Pour le moment, il n'y a pas de formule générale permettant d'énumérer des polyominos selon les statistiques considérées, la méthode abordée dans \cite{K1-Ri1} en est un exemple. En revanche, plusieurs méthodes d'énumération de certaines familles de polyominos ont été développées ces dernières décennies. Une grande partie de ces nouvelles  avancées portent sur la convexité et l'orientation des polyominos.
+
+
+  \cite{De-Vi} ont prouvé que les polyominos convexes de périmètre $2n+8$ sont au nombre de $(2n+11)4^{n}-4(2n+1)\{_{n}^{2n}\}$, un résultat confirmé quatre ans plus tard par \cite{Ch-Li} à travers les séries génératrices dépendantes  de la hauteur et de la largeur de ces derniers. Avec la physique statistique, la notion de polyomino dirigé a été introduite: un polyomino dirigé est  un polyomino dont une des cellules, appelée source, est fixée et chacune des autres cellules est atteinte par un chemin dans deux directions partant de la source.
+ \cite{DE-Na-Va}  ont énuméré  certains polyominos  dirigés en fonction de leur aire dont des résultats similaires peuvent être consultés dans un article  de \cite{Ha-Na}. \cite{Go-Vi} ont énuméré les polyominos sur la base de leur aire et leur périmètre, et Viennot en a fait la synthèse   (\cite{Vie1}). \cite{De-Du} ont de leur côté énuméré les polyominos verticalement convexes et dirigés sur la base de leur aire et de leur périmètre  tandis que  les polyominos dirigés diagonalement convexes ont été étudiés par \cite{Pr-Sv} sur la base de leur aire. Bien que l'utilisation des séries génératrices suivant les dimensions des polyominos ait contribué à l'énumération des polyominos convexes, il est à noter que, pour le moment, ces résultats restent partiels et le plus souvent asymptotiques et dépendants d'une certaine sous-classe de polyominos. Notamment on ne sait toujours pas énumérer
+les polyominos convexes suivant l’aire.  \cite{K1-Ri1} en ont trouvé une estimation asymptotique alors que \cite{Bos1} établit un système de $q$ équations dont une des
+composantes de la solution est la série génératrice des polyominos
+convexes, comptés suivant la hauteur, la largeur et l’aire.
+
+
+ Goupil et ses coauteurs ont étudié des polyominos inscrits dans des rectangles de dimensions données (\cite{Goup2}). Ils ont entre autres énuméré les  polyominos inscrits d'aire minimale et ensuite les polyominos inscrits d'aire minimale plus un et plus deux. %\cite{Goup1} ont, à partir de  la notion de polycubes inscrits dans un prisme rectangulaire d'aire minimale, construit des fonctions génératrices de polycubes minimaux sous la forme de fonctions rationnelles et en ont extrait un certain nombres de formules exactes et des relations pour quelques sous-familles de ces polyominos. 
+Parmi les travaux notables, nous avons l'article \cite{Goup3} dans lequel, en  considérant certaines statistiques données, les auteurs ont construit des formules exactes et des fonctions génératrices énumérant les polyominos non nécessairement convexes et inscrits dans un rectangle. Des principales fonctions génératrices, ils ont déduit les fonctions génératrices et les formules exactes des polyominos  d'indices un et deux avec des formules plus générales que celles déjà établies sans la contrainte de convexité.
+ 
+
+
+ Depuis la fin du $19^{e}$ siècle, les polyominos apparaissent régulièrement dans les puzzles et les jeux, dont le jeu Tétris. Ils sont utilisés dans les pavages de surfaces et interviennent en modélisation dans les domaines de la biologie, de la physique statistique et de la chimie.
+ En effet, les polyominos modélisent l'écoulement d'un fluide dans les problèmes de percolation tout en évaluant la probabilité que le fluide passe au travers d'un certain matériau (\cite{Rous}). Du point de vue chimique, les molécules et les polymères peuvent être représentés par des polyominos ou par des polycubes (\cite{Bos2}).
+
+
+
+ Plusieurs avancées ont été faites ces dernières décennies par rapport à ce sujet. La plupart des études se limitent  à la fixation d'au moins un des paramètres tels que la hauteur ou la largeur du rectangle  dans lequel ces polyominos sont inscrits. La question qui s'y dégage est donc celle-ci: n'est-il  pas possible d’énumérer des  polyominos inscrits dans un rectangle de dimensions  quelconques en tenant compte des paramètres d'aire, de périmètre, du nombre de feuilles et du nombre de composantes connexes? Une partie des réponses à cette question se trouve dans ce mémoire.
+
+
+
+Le premier chapitre est consacré aux rappels  des termes techniques qui sont utilisés tout au long de ce travail, notamment les généralités sur les polyominos, les séries génératrices, la théorie des langages et des automates et les partitions non croisées.
+
+Dans le chapitre $2$, nous construisons l'automate nous permettant de générer et d'énumérer les polyominos inscrits dans un rectangle de dimensions quelconques. Dans ce même chapitre, nous présentons en détails les automates  pour le cas des rectangles de largeur $2$ et $3$.
+
+Dans le troisième chapitre nous construisons, tout comme dans le deuxième chapitre, l'automate permettant de générer et d’énumérer les forêts de polyominos inscrites dans un rectangle  de dimensions quelconques.
+
+Au chapitre $4$, nous présentons les principaux algorithmes permettant l'implémentation des formules obtenues aux chapitres précédents.

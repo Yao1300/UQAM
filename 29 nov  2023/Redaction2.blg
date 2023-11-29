@@ -1,0 +1,62 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: Redaction2.aux
+A level-1 auxiliary file: nom_de_fichier_des_remerciements.aux
+A level-1 auxiliary file: nom_de_fichier_du_resume.aux
+A level-1 auxiliary file: Abstract.aux
+A level-1 auxiliary file: Introduction.aux
+A level-1 auxiliary file: Préliminaires.aux
+A level-1 auxiliary file: Automatum.aux
+A level-1 auxiliary file: AutomatumF.aux
+A level-1 auxiliary file: Aspects_algorithimiques.aux
+A level-1 auxiliary file: Conclusion_et_perspectives.aux
+A level-1 auxiliary file: nom_de_fichier_d_une_annexe.aux
+The style file: apalike-uqam.bst
+Database file #1: Bibi.bib
+Warning--empty year in Oeis2
+Warning--there is url but no urldate in Oeis2
+Warning--empty year in Oeis
+Warning--there is url but no urldate in Oeis
+Warning--there's a number but no series in Auto1
+You've used 26 entries,
+            2552 wiz_defined-function locations,
+            774 strings with 7815 characters,
+and the built_in function-call counts, 10752 in all, are:
+= -- 1074
+> -- 272
+< -- 26
++ -- 93
+- -- 88
+* -- 852
+:= -- 1722
+add.period$ -- 83
+call.type$ -- 26
+change.case$ -- 171
+chr.to.int$ -- 25
+cite$ -- 31
+duplicate$ -- 487
+empty$ -- 979
+format.name$ -- 134
+if$ -- 2246
+int.to.chr$ -- 2
+int.to.str$ -- 0
+missing$ -- 30
+newline$ -- 135
+num.names$ -- 78
+pop$ -- 206
+preamble$ -- 1
+purify$ -- 174
+quote$ -- 0
+skip$ -- 323
+stack$ -- 0
+substring$ -- 834
+swap$ -- 69
+text.length$ -- 4
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 148
+warning$ -- 5
+while$ -- 92
+width$ -- 0
+write$ -- 342
+(There were 5 warnings)

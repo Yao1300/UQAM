@@ -1,0 +1,91 @@
+\babel@toc {french}{}
+\vspace {1.5ex}
+\contentsline {chapter}{\MakeUppercase {Chapitre\hskip 0.5em I} \hskip 0.5em \MakeUppercase {Introduction}}{4}{}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {1.1}Background sur les polyominos}{4}{}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {1.2}Utilité des polyominos}{4}{}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {1.3}Applications(domaines d'applications, problèmes ouverts)}{4}{}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {1.4}(Classification des polyominos}{4}{}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {1.5}Problématique}{4}{}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {1.6}Annonce du plan}{4}{}%
+\vspace {1.5ex}
+\contentsline {chapter}{\MakeUppercase {Chapitre\hskip 0.5em II} \hskip 0.5em \MakeUppercase {Préliminaires}}{5}{}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {2.1}Polyomino}{5}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {2.1.1}Notations}{5}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {2.1.2}Définitions}{6}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {2.1.3}Exemples}{6}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {2.1.4}Propriétés et généralités}{6}{}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {2.2}Polyomino inscrit dans un rectangle}{6}{}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {2.3}Théorie des automates}{6}{}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {2.4}Automate décrivant la génération des polyominos inscrits dans un rectangle}{6}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {2.4.1}Notions d'états}{6}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {2.4.2}Exemples d'automate décrivant les polyominos inscrits dans un rectangle de largeur 2}{6}{}%
+\vspace {1.5ex}
+\contentsline {chapter}{\MakeUppercase {Chapitre\hskip 0.5em III} \hskip 0.5em \MakeUppercase {Dénombrement des polyominos inscrits dans un rectangle de largeur 3 et de hauteur quelconque}}{7}{}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {3.1}Automate décrivant les polyominos inscrits dans un rectangle $b\times h$}{8}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {3.1.1}Les états possibles}{8}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {3.1.2}États initiaux et états finaux}{8}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {3.1.3}Transitions entre états}{8}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {3.1.4}Matrice de tranfert}{8}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {3.1.5}Définition et génération de la matrice de tranfert}{8}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {3.1.6}Utilisation de la matrice de transfert pour compter les polyominos}{8}{}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {3.2}Quelques résultats}{8}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {3.2.1}Résultats pour $h=2$}{8}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {3.2.2}Résultats pour $h=3$}{8}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {3.2.3}résultats pour $h=4$}{8}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {3.2.4}Résultats pour $h$ quelconque: formule de récurrence }{8}{}%
+\vspace {1.5ex}
+\contentsline {chapter}{\MakeUppercase {Chapitre\hskip 0.5em IV} \hskip 0.5em \MakeUppercase {Dénombrement des polyominos inscrits dans un rectangle de largeur 4 et de hauteur quelconque}}{9}{}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {4.1}Automate décrivant les polyominos inscrits dans un rectangle de largeur 4}{10}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {4.1.1}Les états possibles}{10}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {4.1.2}États initiaux et états finaux}{10}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {4.1.3}Transitions entre états}{10}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {4.1.4}Matrice de tranfert}{10}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {4.1.5}Définition et génération de la matrice de tranfert}{10}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {4.1.6}Utilisation de la matrice de transfert pour compter les polyominos}{10}{}%
+\vspace {1.5ex}
+\contentsline {section}{\numberline {4.2}Quelques résultats}{10}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {4.2.1}Résultats pour $h=4$}{10}{}%
+\vspace {1.5ex}
+\contentsline {subsection}{\numberline {4.2.2}Résultats pour $h$ quelconque: formule de récurrence }{10}{}%
+\vspace {1.5ex}
+\contentsline {chapter}{\MakeUppercase {Chapitre\hskip 0.5em V} \hskip 0.5em \MakeUppercase {Conclusion et perspectives}}{ii}{}%
+\vspace {1.5ex}
+\contentsline {chapter}{\MakeUppercase {Liste des tableaux}}{vi}{}%
+\vspace {1.5ex}
+\contentsline {chapter}{\MakeUppercase {LISTE DES FIGURES}}{vii}{}%

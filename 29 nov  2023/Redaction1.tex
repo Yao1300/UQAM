@@ -1,0 +1,153 @@
+\documentclass[12pt]{memoireuqam1.3}
+%\documentclass[12pt,twoside]{memoireuqam1.3}
+% Si vous souhaitez en recto-verso
+\usepackage{graphicx}% Pour les figures
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc} % Pour utiliser les caractères accentués
+\usepackage[T1]{fontenc}
+\usepackage{url}
+\usepackage{cwpuzzle}
+\usepackage{xcolor}
+\usepackage{logicpuzzle}
+\newtheorem{Prop}{Proposition}[subsubsection]
+\newtheorem{Theo}{Th\'eor\`eme}[subsubsection]
+\newtheorem{Prp}{Propri\'et\'es}[subsubsection]
+\newtheorem{Lem}{Lemme}[subsubsection]
+\newtheorem{Pre}{Preuve}[subsubsection]
+\newtheorem{Rem}{Remarque}[subsubsection]
+\newtheorem{Ex}{Exemple}[subsubsection]
+\newtheorem{Cor}{Corollaire}[subsubsection]
+\newtheorem{Def}{D\'efinition}[subsubsection]
+
+%%%%
+% Visitez http://www.labmath.uqam.ca/presentation-de-la-classe-memoireuqam1-3/ pour plus details
+%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%
+% Pour la page titre
+%%%%%%%%%%%%%%%%%%%%
+\title{Énumération de familles de polyominos inscrits dans un rectangle de largeur fixée et de hauteur variable}
+% Votre nom complet tel qu'il apparaît à votre dossier du registrariat de l'UQAM
+\author{Akakpo Yao Ihébami}
+% Année et mois courant sauf si spécifié autrement pas \degreemonth et \degreeyear
+%\degreemonth{mois du dépôt}
+%\degreeyear{année du dépôt}
+\uqammemoire %% ou \uqamthese ou \uqamrapport
+\matiere{mathématiques-Informatiques}
+
+
+\thispagestyle{empty}        % La page titre n'est pas numérotée
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%
+% Page préliminaires
+%%%%%%%%%%%%%%%%%%%%
+\section*{Résumé}
+\newpage
+\section*{Abstract}
+\newpage
+\section*{Remerciements}
+\chapter{Introduction}
+\section{Background sur les polyominos}
+\section{Utilité des polyominos}
+\section{Applications(domaines d'applications, problèmes ouverts)}
+\section{(Classification des polyominos}
+\section{Problématique}
+\section{Annonce du plan}
+\chapter{Préliminaires}
+\section*{Introduction}
+\section{Polyomino}
+\subsection{Notations}
+Tout au long de ce travaille, nous ut
+\begin{Puzzle}{3}{3}%
+|1 |2 |4 |. |3 |*|5|. |8 |7 |6 |.
+\end{Puzzle}
+\begin{logicpuzzle}[rows=3,columns=3,color=red!100]
+%\valueH{1,2,3}
+%\valueV{1,2,3}
+\setrow{3}{,,}
+\setrow{2}{,{},}
+\setrow{1}{,,}
+\fillcell{2}{2}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\subsection{Définitions}
+\subsubsection*{Cellule}
+\subsection{Exemples}
+\subsection{Propriétés et généralités}
+\section{Polyomino inscrit dans un rectangle}
+\section{Théorie des automates}
+\section{Automate décrivant la génération des polyominos inscrits dans un rectangle}
+\subsection{Notions d'états}
+\subsection{Exemples d'automate décrivant les polyominos inscrits dans un rectangle de largeur 2}
+\section*{Conclusion}
+\chapter{Dénombrement des polyominos inscrits dans un rectangle de largeur 3 et de hauteur quelconque}
+\section*{Introduction}
+\section{Automate décrivant les polyominos inscrits dans un rectangle $b\times h$}
+\subsection{Les états possibles}
+\subsection{États initiaux et états finaux}
+\subsection{Transitions entre états}
+\subsection{Matrice de tranfert}
+\subsection{Définition et génération de la matrice de tranfert}
+\subsection{Utilisation de la matrice de transfert pour compter les polyominos}
+\section{Quelques résultats}
+\subsection{Résultats pour $h=2$}
+\subsection{Résultats pour $h=3$}
+\subsection{résultats pour $h=4$}
+\subsection{Résultats pour $h$ quelconque: formule de récurrence }
+\section*{Conclusion}
+\chapter{Dénombrement des polyominos inscrits dans un rectangle de largeur 4 et de hauteur quelconque}
+\section*{Introduction}
+\section{Automate décrivant les polyominos inscrits dans un rectangle de largeur 4}
+\subsection{Les états possibles}
+\subsection{États initiaux et états finaux}
+\subsection{Transitions entre états}
+\subsection{Matrice de tranfert}
+\subsection{Définition et génération de la matrice de tranfert}
+\subsection{Utilisation de la matrice de transfert pour compter les polyominos}
+\section{Quelques résultats}
+\subsection{Résultats pour $h=4$}
+\subsection{Résultats pour $h$ quelconque: formule de récurrence }
+\section*{Conclusion}
+\chapter{Conclusion et perspectives}
+\renewcommand \bibname{R\'EF\'ERENCES}% FACULTATIF
+%si vous voulez qu'apparaisse le titre RÉFÉRENCES plutôt que BIBLIOGRAPHIE
+
+\renewcommand \listfigurename{LISTE DES FIGURES}
+\renewcommand \appendixname{APPENDICE}
+\renewcommand \figurename{Figure}
+\renewcommand \tablename{Tableau}
+
+\pagenumbering{roman} % numérotation des pages en chiffres romains
+\addtocounter{page}{1} % Pour que les remerciements commencent à la page ii
+\include{nom_de_fichier_des_remerciements}
+\tableofcontents % Pour générer la table des matières
+\listoftables % Pour générer la liste des tableaux
+\listoffigures % Pour générer la liste des figures
+\include{nom_de_fichier_du_resume}
+% Utilisez l'environnement  abstract pour rédiger votre résumé
+
+
+%%%%%%%%%%%%%%%%%%%%
+% Document principal
+%%%%%%%%%%%%%%%%%%%%
+
+\include{nom_de_fichier_de_l_introduction}
+% Utilisez l'environnement  introduction pour rédiger votre introduction
+\include{nom_de_fichier_du_premier_chapitre}
+\include{nom_de_fichier_du_deuxieme_chapitre}
+\include{nom_de_fichier_du_chapitre_suivant}
+
+\include{nom_de_fichier_de_la_conclusion}
+% Utilisez l'environnement  conclusion pour rédiger votre conclusion
+
+%%%%%%%%%%%%%%%%%%%%
+% Page liminaires
+%%%%%%%%%%%%%%%%%%%%
+
+\include{nom_de_fichier_d_une_annexe}
+\bibliographystyle{apalike-uqam}
+\bibliography{un_fichier_bib}
+\end{document}

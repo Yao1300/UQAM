@@ -1,0 +1,60 @@
+\babel@toc {french}{}
+\contentsline {figure}{\numberline {{1.1}}{\ignorespaces Une cellule.\relax }}{6}%
+\contentsline {figure}{\numberline {{1.2}}{\ignorespaces Deux polyominos et une forêt de polyominos.\relax }}{6}%
+\contentsline {figure}{\numberline {{1.3}}{\ignorespaces Exemple de polyomino inscrit dans le rectangle $4\times 3$. \relax }}{7}%
+\contentsline {figure}{\numberline {{1.4}}{\ignorespaces Exemples de polyominos colonne et ligne. \relax }}{7}%
+\contentsline {figure}{\numberline {{1.5}}{\ignorespaces Ces polyominos de la gauche vers la droite sont verticalement convexe, horizontalement convexe et convexe.\relax }}{8}%
+\contentsline {figure}{\numberline {{1.6}}{\ignorespaces Polyomino parallélogramme.\relax }}{8}%
+\contentsline {figure}{\numberline {{1.7}}{\ignorespaces Polyomino serpent.\relax }}{9}%
+\contentsline {figure}{\numberline {{1.8}}{\ignorespaces Exemples de deux polyominos inscrits et un polyomino non inscrit. \relax }}{9}%
+\contentsline {figure}{\numberline {{1.9}}{\ignorespaces Forêt de polyominos inscrite dans le rectangle $4\times 5$.\relax }}{10}%
+\contentsline {figure}{\numberline {{1.10}}{\ignorespaces Exemples de polyominos d'indice $0$ et d'indice $1$.\relax }}{10}%
+\contentsline {figure}{\numberline {{1.11}}{\ignorespaces Exemple d'automate fini élémentaire non déterministe.\relax }}{14}%
+\contentsline {figure}{\numberline {{1.12}}{\ignorespaces Exemple d'automate fini élémentaire déterministe.\relax }}{15}%
+\contentsline {figure}{\numberline {{1.13}}{\ignorespaces Les lignes possibles d'un rectangle de type $2$.\hskip 1em\relax \hskip 1em\relax \relax }}{19}%
+\contentsline {figure}{\numberline {{2.1}}{\ignorespaces Décomposition de ($P$) en une suite de lignes.\relax }}{21}%
+\contentsline {figure}{\numberline {{2.2}}{\ignorespaces Représentation de trois lignes d'un rectangle de type $5$ par des nombres binaires .\relax }}{22}%
+\contentsline {figure}{\numberline {{2.3}}{\ignorespaces Les composantes connexes d'une ligne.\relax }}{22}%
+\contentsline {figure}{\numberline {{2.4}}{\ignorespaces Différence entre les lignes ayant les mêmes composantes connexes.\relax }}{23}%
+\contentsline {figure}{\numberline {{2.5}}{\ignorespaces Exemples de composantes connexes par le haut.\relax }}{24}%
+\contentsline {figure}{\numberline {{2.6}}{\ignorespaces Forêt de polyominos inscrite dans le rectangle $15\times 2$.\relax }}{25}%
+\contentsline {figure}{\numberline {{2.7}}{\ignorespaces Polyomino inscrit dans le rectangle $8\times 2.$ \relax }}{26}%
+\contentsline {figure}{\numberline {{2.8}}{\ignorespaces Calcul des valeurs $deg$ à la ligne du bas.\relax }}{27}%
+\contentsline {figure}{\numberline {{2.9}}{\ignorespaces Polyomino inscrit dans le rectangle $3\times 4$.\relax }}{27}%
+\contentsline {figure}{\numberline {{2.10}}{\ignorespaces Ligne d'un rectangle de type $10$.\relax }}{29}%
+\contentsline {figure}{\numberline {{2.11}}{\ignorespaces Polyominos inscrits dans le rectangle de type $7$ de hauteur $6$.\relax }}{29}%
+\contentsline {figure}{\numberline {{2.12}}{\ignorespaces Forêts de polyominos lignes de longueurs $11$ et $10$ ayant respectivement $6$ et $5$ composantes connexes.\relax }}{33}%
+\contentsline {figure}{\numberline {{2.13}}{\ignorespaces Lignes de deux états de $\mathcal {A}_{3}$ de longueurs différentes.\relax }}{40}%
+\contentsline {figure}{\numberline {{2.14}}{\ignorespaces Les trois décalages pour passer de $e$ à $e'$.\relax }}{40}%
+\contentsline {figure}{\numberline {{2.15}}{\ignorespaces Passage impossible de la deuxième ligne à la troisième ligne.\relax }}{42}%
+\contentsline {figure}{\numberline {{2.16}}{\ignorespaces Transition impossible de l'état du haut à celui du bas.\relax }}{42}%
+\contentsline {figure}{\numberline {{2.17}}{\ignorespaces Les lignes des états $e_{1}$, $e_{2}$, $e_{3}$ et $e_{4}$.\relax }}{45}%
+\contentsline {figure}{\numberline {{2.18}}{\ignorespaces Transition de $e_{1}$ à $e_{3}$.\relax }}{45}%
+\contentsline {figure}{\numberline {{2.19}}{\ignorespaces Transition de $e_{1}$ à $e_{4}$ .\relax }}{45}%
+\contentsline {figure}{\numberline {{2.20}}{\ignorespaces Transition de $e_{2}$ à $e_{3}$.\relax }}{46}%
+\contentsline {figure}{\numberline {{2.21}}{\ignorespaces Transition de $e_{3}$ à $e_{4}$.\relax }}{46}%
+\contentsline {figure}{\numberline {{2.22}}{\ignorespaces Périmètre du rectangle résultant de deux cases consécutives.\relax }}{47}%
+\contentsline {figure}{\numberline {{2.23}}{\ignorespaces La feuille résultante de la transition de $e$ à $e'$ est la cellule à droite de la ligne du haut.\relax }}{49}%
+\contentsline {figure}{\numberline {{2.24}}{\ignorespaces Ligne d'un état de $\mathcal {A}_{12}$.\relax }}{51}%
+\contentsline {figure}{\numberline {{2.25}}{\ignorespaces La ligne de l'état $e$ et la ligne précédente.\relax }}{55}%
+\contentsline {figure}{\numberline {{2.26}}{\ignorespaces Polyomino inscrit dans le rectangle $7\times 5$.\relax }}{57}%
+\contentsline {figure}{\numberline {{2.27}}{\ignorespaces Les deux transitions permises.\relax }}{58}%
+\contentsline {figure}{\numberline {{2.28}}{\ignorespaces Transitions entre deux états de $\mathcal {A}_{5}$.\relax }}{59}%
+\contentsline {figure}{\numberline {{2.29}}{\ignorespaces Polyomino inscrit dans le rectangle $3\times 3$.\relax }}{63}%
+\contentsline {figure}{\numberline {{2.30}}{\ignorespaces Polyomino, de hauteur $4$, inscrit dans le rectangle de largeur $3$ et de hauteur $4$.\relax }}{65}%
+\contentsline {figure}{\numberline {{2.31}}{\ignorespaces Deux polyominos inscrits générés par $\mathcal {A}_{7}$.\relax }}{67}%
+\contentsline {figure}{\numberline {{2.32}}{\ignorespaces États de l'automate générateur des polyominos inscrits dans un rectangle de largeur $2$.\relax }}{68}%
+\contentsline {figure}{\numberline {{2.33}}{\ignorespaces Automate $\mathcal {A}_{2}$.\relax }}{70}%
+\contentsline {figure}{\numberline {{2.34}}{\ignorespaces Polyomino inscrit dans le rectangle $2\times 1$.\relax }}{76}%
+\contentsline {figure}{\numberline {{2.35}}{\ignorespaces Polyomino inscrit dans le rectangle $3\times 1$.\relax }}{80}%
+\contentsline {figure}{\numberline {{3.1}}{\ignorespaces Deux exemples de forêts de polyominos inscrites dans un rectangle $B$.\relax }}{87}%
+\contentsline {figure}{\numberline {{3.2}}{\ignorespaces Exemple de forêt de polyominos non inscrite contenue dans un rectangle du type $8\times 7$ dont la première ligne est dépourvue de cellules.\relax }}{88}%
+\contentsline {figure}{\numberline {{3.3}}{\ignorespaces Forêt de polyominos inscrite dans un rectangle du type $R_{15}$ de hauteur $8$.\relax }}{92}%
+\contentsline {figure}{\numberline {{3.4}}{\ignorespaces Forêts de polyominos inscrites dans le rectangle $3\times 1$.\relax }}{96}%
+\contentsline {figure}{\numberline {{3.5}}{\ignorespaces Forêts de polyominos inscrites dans le rectangle $3\times 2$ partant de l'état $(100,000,\{\{0\}\})$.\relax }}{97}%
+\contentsline {figure}{\numberline {{3.6}}{\ignorespaces Forêts de polyominos inscrites dans le rectangle $3\times 2$ partant de l'état $(010,000,\{\{0\}\})$.\relax }}{97}%
+\contentsline {figure}{\numberline {{3.7}}{\ignorespaces Forêts de polyominos inscrites dans le rectangle $3\times 2$ partant de l'état $(001,000,\{\{0\}\})$.\relax }}{97}%
+\contentsline {figure}{\numberline {{3.8}}{\ignorespaces Forêts de polyominos inscrites dans le rectangle $3\times 2$ partant de l'état $(110,110,\{\{0\}\})$.\relax }}{97}%
+\contentsline {figure}{\numberline {{3.9}}{\ignorespaces Forêts de polyominos inscrites dans le rectangle $3\times 2$ partant de l'état $(101,000,\{\{0\},\{1\}\})$.\relax }}{97}%
+\contentsline {figure}{\numberline {{3.10}}{\ignorespaces Forêts de polyominos inscrites dans le rectangle $3\times 2$ partant de l'état $(011,011,\{\{0\}\})$.\relax }}{98}%
+\contentsline {figure}{\numberline {{3.11}}{\ignorespaces Forêts de polyominos inscrites dans le rectangle $3\times 2$ partant de l'état $(111,121,\{\{0\},\{1\}\})$.\relax }}{98}%

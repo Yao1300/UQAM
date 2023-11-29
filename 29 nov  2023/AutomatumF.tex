@@ -1,0 +1,877 @@
+\chapter{Automate décrivant les forêts de polyominos inscrites dans un rectangle}	
+
+Tout comme pour les polyominos, nous  montrons dans ce chapitre que toute forêt de polyominos inscrite dans un rectangle du type $B$  se génère  par un automate $\mathcal{A}_{FB}$. L'automate $\mathcal{A}_{FB}$ est en quelque sorte une généralisation de l'automate $\mathcal{A}_{B}$. La différence entre les deux réside dans le nombre d'états et surtout au niveau des transitions possibles. Ce chapitre  hérite  des notions abordées dans le chapitre précédent.
+
+Dans ce chapitre, en plus des statistiques abordées dans le chapitre précédent, nous allons parler du nombre de composantes connexes.
+
+Pour commencer, nous construisons l'automate $\mathcal{A}_{FB}$. Ensuite nous étudions l'automate  $\mathcal{A}_{F3}$.
+
+\section{ Généralités sur l'automate $\mathcal{A}_{FB}$}
+\begin{spacing}{0.30}
+\subsection{État}
+\end{spacing}
+Pour commencer cette partie, nous évoquons quelques exemples de forêts de polyominos inscrites dans un rectangle du type $B$.
+\begin{figure}[!htb]
+\begin{minipage}[c]{.46\linewidth}
+        \centering
+\begin{logicpuzzle}[rows=7,columns=8,color=cyan!100,width=750px,scale=0.5]
+\fillcell{1}{3}
+\fillcell{2}{3}
+\fillcell{3}{3}
+\fillcell{6}{3}
+\fillcell{7}{3}
+\fillcell{1}{4}
+\fillcell{2}{4}
+\fillcell{1}{5}
+\fillcell{6}{4}
+\fillcell{1}{1}
+\fillcell{1}{7}
+\fillcell{7}{1}
+\fillcell{8}{1}
+\fillcell{8}{2}
+\fillcell{7}{7}
+\fillcell{6}{7}
+\fillcell{8}{7}
+\fillcell{6}{7}
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.46\linewidth}
+        \centering
+\begin{logicpuzzle}[rows=10,columns=10,color=cyan!100,width=750px,scale=0.5]
+\fillcell{1}{3}
+\fillcell{2}{3}
+\fillcell{3}{3}
+\fillcell{6}{3}
+\fillcell{7}{3}
+\fillcell{1}{4}
+\fillcell{2}{4}
+\fillcell{1}{5}
+\fillcell{6}{4}
+\fillcell{1}{1}
+\fillcell{1}{9}
+\fillcell{7}{1}
+\fillcell{8}{1}
+\fillcell{8}{2}
+\fillcell{7}{7}
+\fillcell{6}{7}
+\fillcell{1}{10}
+\fillcell{10}{1}
+\fillcell{9}{2}
+\fillcell{9}{1}
+\fillcell{2}{10}
+\fillcell{2}{9}
+\fillcell{10}{10}
+\fillcell{9}{10}
+\fillcell{9}{9}
+\fillcell{10}{9}
+\fillcell{8}{10}
+\end{logicpuzzle}
+\end{minipage}
+ \caption{\label{fig1chap3} Deux exemples de forêts de polyominos   inscrites dans un rectangle $B$.}
+\end{figure}
+On peut remarquer à travers les deux forêts de polyominos inscrites de la figure \ref{fig1chap3} que dans le cas de l'automate $\mathcal{A}_{FB}$ le  passage d'une ligne donnée de longueur $\mathcal{L}$ à la ligne suivante (si  elle existe) de longueur $\mathcal{L}'$, $\mathcal{L}'\leq \mathcal{L} $, est possible même si l'une d'entre elles est dépourvue de cellules. Nous  introduisons ainsi la notion d'état vide de l'automate $\mathcal{A}_{FB}$.
+\begin{Def}\label{etatvide}
+Un état de longueur $\mathcal{L}$ de l'automate $\mathcal{A}_{FB}$ ,  $1\leq \mathcal{L}\leq B$, est dit vide  si et seulement si sa ligne est dépourvue de cellules. Il se note alors $$\displaystyle(\underbrace{00...0}_{\mathcal{L}\text{ termes }}, \underbrace{00...0}_{\mathcal{L}\text{ termes }},\{\{ \} \}).$$
+\end{Def}
+Nous définissons un état de $\mathcal{A}_{FB}$ comme suit. 
+\begin{Def}\label{def1chp3}
+Tout état de longueur $\mathcal{L}$ de l'automate $\mathcal{A}_{FB}$ ,  $1\leq \mathcal{L}\leq B$, est un état de longueur $\mathcal{L}$ de $\mathcal{A}_{B}$ ainsi que l'état vide de longueur $\mathcal{L}$.
+
+\end{Def}
+\begin{Prop}\label{prop1chap3}
+Tout état initial de $\mathcal{A}_{B}$ est un état initial de $\mathcal{A}_{FB}$ et inversement.
+\end{Prop}
+\begin{Pre}
+Désignons par $I_{B}$ et $I_{FB}$ les ensembles d'états initiaux respectifs de $\mathcal{A}_{B}$ et $\mathcal{A}_{FB}$.
+
+La proposition \ref{prop1chap3} s'explique  d'abord par le fait qu'un état vide de longueur $B$ ne peut pas être un état initial. Si tel était le cas, le côté haut du rectangle de type $B$ qui contient la forêt de polyominos résultante ne serait pas atteint et donc cette dernière ne serait pas inscrite dans ce rectangle. La figure \ref{fig2chap3o}  est une  illustration de ce contre-exemple. De plus tout état initial de l'automate $\mathcal{A}_{FB}$  ou de $\mathcal{A}_{B}$  fait allusion à la première ligne d'un rectangle du type $B$. Or aucune des composantes connexes d'une première ligne d'un tel rectangle n'est connectée à une autre par le haut. Donc les états initiaux de $\mathcal{A}_{FB}$ ont exactement les mêmes propriétés que ceux de $\mathcal{A}_{B}$.  On a alors $I_{FB}\subset I_{B}$.
+
+Inversement, comme $\mathcal{A}_{FB}$  généralise $\mathcal{A}_{B}$  alors $\mathcal{A}_{B}$ ne peut pas avoir plus d'état initiaux que $\mathcal{A}_{FB}$, ce  qui nous donne $I_{B}\subset I_{FB}$.
+
+D'où   $I_{B}= I_{FB}$.
+\end{Pre}
+\begin{figure}[!htb]
+\begin{minipage}[c]{.24\linewidth}
+  \centering
+ \end{minipage}\hfill
+\begin{minipage}[c]{.66\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=7,columns=8,color=cyan!100,width=750px,scale=0.5]
+\fillcell{1}{3}
+\fillcell{2}{3}
+\fillcell{3}{3}
+\fillcell{6}{3}
+\fillcell{7}{3}
+\fillcell{1}{4}
+\fillcell{2}{4}
+\fillcell{1}{5}
+\fillcell{6}{4}
+\fillcell{1}{1}
+\fillcell{1}{6}
+\fillcell{7}{1}
+\fillcell{8}{1}
+\end{logicpuzzle}
+\end{minipage}
+\caption{\label{fig2chap3o} Exemple de forêt de polyominos non inscrite contenue dans un rectangle du type $8\times 7$  dont la première ligne est dépourvue de cellules.}
+\end{figure}
+\begin{Prop}\label{prop2chp3}
+Tout état  non vide de $\mathcal{A}_{FB}$ est final si et seulement s'il contient des cellules à ses deux extrémités.
+\end{Prop}
+\begin{Pre}
+En effet si un état vide était un  état final de l'automate $\mathcal{A}_{FB}$ toute forêt de polyominos dont la dernière ligne est la ligne d'un tel état ne toucherait pas la base du rectangle dans lequel est contenue cette forêt de polyominos. De plus comme la connexité n'est pas exigée dans le cadre d'une forêt de polyominos, n'importe quel état dont la ligne contient les cellules aux extrémités est un état final. Le fait d'exiger la présence de cellules  aux deux extrémités d'une ligne d'un état final résulte de la remarque \ref{reg}. Cette remarque exige que la suite du polyomino ou  de la forêt de polyminos évoluant dans une bande rectangulaire de largeur  $\mathcal{L}$ soit décrite par un état de longueur $\mathcal{L}$. Ainsi si l'une des extrémités d'un état final de longueur  $\mathcal{L}$  est une case sans cellule alors cet état devrait être plutôt de longueur au plus $\mathcal{L}-1$. 
+\end{Pre}
+Après avoir pris connaissance des états de $\mathcal{A}_{FB}$, il s'avère indispensable de savoir comment se font les transitions entre ces derniers.
+\subsection{Transition entre les états}
+Nous avons les propositions suivantes.
+
+\begin{Prop}\label{prop2606221Mod}
+Soit $e$ et $e'$ deux états  de $\mathcal{A}_{FB}$ de longueurs respectives $\mathcal{L}$ et $\mathcal{L}'$, avec $\mathcal{L}'< \mathcal{L}$, et de lignes $$L=\alpha_{i_{1}}\alpha_{i_{1}+1}...\alpha_{i_{1}+\mathcal{L}-1} \textit{  et  }L'=\alpha'_{i'_{1}}\alpha'_{i'_{1}+1}...\alpha'_{i'_{1}+\mathcal{L}'-1}$$  respectivement telles que  $i_{1}\leq i'_{1}\leq i'_{1}+\mathcal{L}'-1 \leq i_{1}+\mathcal{L}-1 $.
+ \begin{itemize}
+ \item[(i)] Si $\alpha_{i_{1}}= \alpha_{i_{1}+\mathcal{L}-1}=0$ alors la transition de $e$ à $e'$ est impossible.
+ \item[(ii)] Si $\alpha_{i_{1}}=1$, $\alpha_{i_{1}+\mathcal{L}-1}=0$ et si $i'_{1}+\mathcal{L}'-1 < i_{1}+\mathcal{L}-1 $ alors la transition de $e$ à $e'$ est impossible.
+ \item[(iii)] Si $\alpha_{i_{1}}=0$, $\alpha_{i_{1}+\mathcal{L}-1}=1$ et  $i_{1} < i'_{1} $ alors la transition de $e$ à $e'$ est impossible.
+ \end{itemize}
+\end{Prop}
+\begin{Pre} (voir la preuve de la proposition \ref{prop2606221})\mbox{ }\\
+La proposition \ref{prop2606221Mod}  est similaire à la  proposition \ref{prop2606221}. La seule différence entre les deux est que les décalages autorisés ici ne tiennent pas compte de la connexité (voir \ref{prop1}). Les deux propositions ont ainsi la même démonstration.
+\end{Pre}
+\begin{Prop}\label{prop3chp3}
+Soit $e$ et $e'$ deux états de $\mathcal{A}_{FB}$ tels que les hypothèses de la proposition \ref{prop2606221Mod},  entraînant l'impossibilité de la transition de $e$ à $e'$, ne soient pas satisfaites. La transition de $e$ à $e'$ n'est possible que si  la longueur de $e$ est supérieure ou égale à la longueur de $e'$ et si la connexion  entre $e$ et $e'$ ne modifie ni la partition non croisée de composantes connexes ni le mot de l'alphabet $\{0,1,2,3\}$ associés à $e'$.
+\end{Prop}
+\begin{Pre}
+Cette proposition  est une conséquence de la construction  des états de l'automate $\mathcal{A}_{FB}$ et du fait que la connexité n'est pas exigée dans le cadre d'une forêt de polyominos. Donc à part les conditions des propositions \ref{propdec191}, \ref{prop2606221Mod}, \ref{prop3} et \ref{prop2}, les hypothèses de la proposition \ref{prop1} n'empêchent pas la possibilité de la transition entre les  états de l'automate $\mathcal{A}_{FB}$.
+\end{Pre}
+\begin{Ex} (Cas d'impossibilité de transition due à la non conformité du mot de l'alphabet $\{0,1,2,3\}$ associé à un des états)\label{ex2chap3}
+ 
+ On considère trois états   $e$, $e'$ et $e''$ de longueur $7$ de $\mathcal{A}_{F7}$, avec
+ \begin{eqnarray*}
+& & e = (1001111,0002231,\{\{0\},\{1\}\}), \quad  e' = (0110010,0110010,\{\{0\},\{1\}\}) \textit{ et } \\
+& & e''= (1001111,0001231,\{\{0\},\{1\}\}).
+ \end{eqnarray*}
+ La transition de $e$ à $e'$ est possible mais celle de $e'$ à $e$ est impossible car si cette dernière était possible, il y aurait une contradiction au niveau du mot de l'alphabet $\{0,1,2,3\}$ associé à $e$ (qui serait $0001231$ au lieu de $0002231$). Par contre, la transition de $e'$ à $e''$ est possible.
+\end{Ex}
+En s'appuyant sur la proposition \ref{prop3chp3} et sur l'exemple \ref{ex2chap3}, on peut dire que  pour deux classes d'états  $cl$ et $cl'$ de longueurs respectives $\mathcal{L}$ et $\mathcal{L}'$ avec $1\leq \mathcal{L}'\leq \mathcal{L} \leq B$, il existe des états $e$ et $e'$ de $cl$ et $cl'$  respectivement tels que la transition de $e$ à $e'$ soit possible. Ce qui n'était pas le cas au niveau des états de l'automate $\mathcal{A}_{B}$ car la connexité est impérative.
+
+
+\begin{Def}\label{defchp3711}
+Une transition élémentaire d'un état $e_{i}$ à un état $e_{j}$ dans le  cadre de l'automate $\mathcal{A}_{FB}$ est donnée par 
+\begin{eqnarray*}\label{transel2}
+t_{i,j} =\lambda w^{a}x^{p}yz^{f}\zeta^{c},
+\end{eqnarray*}
+où $\lambda\in \{0,1\}$, $a$, $p$,  et $f$ représentent toujours les mêmes paramètres que dans le cas de l'automate $\mathcal{A}_{B}$ et $c$ le nombre de composantes connexes de la forêt de polyominos. Les variables $w,x,y,z$ et $\zeta$ sont des variables formelles.
+\end{Def} 
+
+\begin{Rem}\label{remchap3711}
+Les notions de transitions, suites de transitions et tout autre résultat obtenu dans le cadre de l'automate  $\mathcal{A}_{B}$ restent valables  pour l'automate $\mathcal{A}_{FB}$. La seule nouveauté ici est le calcul du nombre de composantes  connexes.
+\end{Rem}
+Le nombre $c$ de composantes connexes, l'exposant de $\zeta$, est tout comme $f$ une valeur algébrique  et représente à chaque transition, la perte ou le gain de composantes connexes. 
+
+ La valeur de $c$ ne dépend  que des classes d'états auxquelles appartiennent les états mis  en jeu dans la transition. Cela s'explique d'une part par le fait que la notion de mot de l'alphabet $\{0,1,2,3\}$ a été introduite, uniquement, pour le calcul de la variation du nombre de  feuilles et d'autre part par le fait qu'une composante connexe d'une forêt de polyomino n'est rien d'autre que l'agencement de quelques composantes connexes de cellules, des lignes du haut jusqu'à la base du rectangle contenant cette forêt de polyominos. On n'a donc pas besoin des mots de  l'alphabet $\{0,1,2,3\}$ pour expliquer la valeur de $c$.
+ 
+  Les composantes connexes par le haut  de la partition non croisée de composantes connexes  associée à un état de $\mathcal{A}_{FB}$ représentent les composantes connexes de la ligne de cet état vue comme forêt de polyominos ligne.
+
+
+Soit $e$ et $e'$ deux états de $\mathcal{A}_{FB}$ tels que la transition  de $e$ à $e'$  soit possible.  On suppose que $e'$ est non vide et  a $n$ composantes connexes par le haut, $cp_{1}, cp_{2},...,cp_{n}$.  
+
+Chaque  multicomposante connexe  $cp_{i}$ de $e'$, contribue  dans le calcul de $c$ à raison d'une valeur $c_{i}$, entier relatif, définie comme suit:
+\begin{itemize}\label{rule1}
+\item[(i)] si $cp_{i}$ n'est liée à aucune composante connexe de  $e$ alors $c_{i}=1$, 
+\item[(ii)] Si $cp_{i}$  est liée à $k$ composantes connexes par le haut de $e$, $k\in \mathbb{N}$ alors $c_{i}=-k+1$.
+\end{itemize}
+Et on a 
+\begin{eqnarray*}\label{cform}
+c= \sum_{1\leq i \leq n}c_{i}.
+\end{eqnarray*}
+Si $e'$ est un état vide, alors $c$ est nul.
+\begin{Ex}\label{exrcl}
+Considérons la forêt de polyomino de la figure \ref{fig2chap3}, inscrite dans le rectangle de $R_{15}$ de hauteur $8$.
+\begin{figure}[!htb]
+\begin{minipage}[c]{.22\linewidth}
+  \centering
+ \end{minipage}\hfill
+\begin{minipage}[c]{.67\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=8,columns=15,color=cyan!100,width=750px,scale=0.5]
+\fillcell{8}{1}
+\fillcell{1}{1}
+\fillcell{2}{1}
+\fillcell{2}{5}
+\fillcell{4}{5}
+\fillcell{5}{5}
+\fillcell{6}{5}
+\fillcell{4}{4}
+\fillcell{4}{3}
+\fillcell{8}{5}
+\fillcell{11}{5}
+\fillcell{12}{5}
+\fillcell{15}{5}
+\fillcell{1}{8}
+\fillcell{2}{8}
+\fillcell{3}{8}
+\fillcell{2}{7}
+\fillcell{8}{8}
+\fillcell{7}{8}
+\fillcell{5}{8}
+\fillcell{3}{6}
+\fillcell{4}{6}
+\fillcell{2}{6}
+\fillcell{1}{6}
+\fillcell{6}{6}
+\fillcell{9}{6}
+\fillcell{10}{6}
+\fillcell{12}{6}
+\fillcell{13}{6}
+\fillcell{14}{6}
+\fillcell{15}{6}
+\fillcell{9}{4}
+\fillcell{10}{4}
+\fillcell{11}{4}
+\fillcell{10}{3}
+\fillcell{11}{3}
+\fillcell{12}{3}
+\fillcell{14}{3}
+\fillcell{15}{3}
+\fillcell{15}{4}
+\fillcell{10}{7}
+\fillcell{10}{8}
+\fillcell{11}{8}
+\fillcell{14}{8}
+\fillcell{14}{7}
+\fillcell{11}{1}
+\fillcell{12}{1}
+\fillcell{13}{1}
+\end{logicpuzzle}
+\end{minipage}
+\caption{\label{fig2chap3} Forêt de polyominos  inscrite dans un rectangle du type $R_{15}$  de hauteur $8$.}
+\end{figure}
+Les états qui décrivent cette figure sont les suivants:
+\begin{eqnarray*}
+e_{1} & = & (111010110110010,121000110110000,\{\{0\},\{1\},\{2\},\{3\},\{4\}\})\\
+e_{2} & = & (010000000100010,010000000100010,\{\{0\},\{1\},\{2\}\})
+\end{eqnarray*}
+\begin{eqnarray*}
+e_{3} & = & (111101001101111, 132100001201231,\{\{0\},\{1\},\{2\},\{3\}\})\\
+e_{4} & = & (010111010011001,010222000012001,\{\{0,1\},\{2\},\{3,4\}\})\\
+e_{5} & = & (000100001110001,000100001220001,\{\{0\},\{1,2\}\})\\
+e_{6} & = & (000100000111011,000100000231012,\{\{0\},\{1,2\}\})\\
+e_{7} & = & (000000000000000,000000000000000,\{\{0\}\})\\
+e_{8} & = & (110000010011100,110000000012100,\{\{0\},\{1\},\{2\}\})
+\end{eqnarray*}
+\begin{itemize}
+\item $e_{1}$ est l'état initial et a cinq composantes connexes par le haut  alors la valeur de $c$ correspondante est $c=5$, le nombre de ses composantes connexes.
+\item $e_{2}$ a trois composantes connexes par le haut $\{0\},\{1\}$ et $\{2\}$. Chacune d'elles sont connectées a une unique composante connexe de $e_{1}$. La valeur de $c$ résultante est $c=0$.
+\item $e_{3}$ a quatre composantes connexes par le haut $\{0\},\{1\},\{2\}$ et $\{3\}$. À part $\{1\}$ qui n'est connectée à aucune composante connexe de $e_{2}$, toutes les autres sont connectées à une seule composante connexe parmi ses composantes connexes. On en déduit donc que $c=1$ pour la transition de $e_{2}$ à $e_{3}$.
+\item $e_{4}$ a trois composantes connexes par le haut, $\{\{0,1\},\{2\}$  et $\{3,4\}\}$ . $\{2\}$ n'est connectée à aucune composante connexe par le haut de $e_{3}$, $\{0,1\}$ est connectée à deux composantes connexes par le haut de $e_{3}$ et $\{3,4\}$ est connectée à une composante connexe par le haut de $e_{3}$. Dans ce cas on a $c=-1+1+0=0$.
+\item $e_{5}$ a deux composantes connexes par le haut $\{0\}$ et $\{1,2\}$
+chacune connectée à une unique composante connexe par le haut de $e_{4}$. La valeur de $c$ résultante de la transition $e_{4}$ à $e_{5}$ est $c=0$.
+\item $e_{6}$  a deux composantes connexes par le haut dont chacune est liée à une seule composante connexe par le haut de $e_{5}$ et donc $c=0$.
+\item $e_{7}$ est vide alors la valeur de $c$ correspondante est $c=0$.
+\item  la valeur de $c$ correspondante à  la transition $e_{7}$ à $e_{8}$ est le nombre de composantes connexes par le haut de $e_{8}$ qui est ici $3$.
+\end{itemize}
+
+Le nombre $n_{c}$ de composantes connexes de cette forêt de polyominos est la somme des valeurs de $c$ issues de toutes les transitions. Ici $n_{c}=5+0+1+0+0+0+3=9$.
+\end{Ex}
+
+D'après les règles de calcul de $c$ évoquées plus haut, il est donc fondamental de connaître pour  une composante connexe par le haut  donnée de $e'$, le nombre de  composantes connexes par le haut de $e$ avec lesquelles elle est en contact. Pour ce faire, nous allons considérer chaque composante connexe par le haut de $e$ et de $e'$ comme étant un état   de même longueur que $e$ et $e'$ respectivement. Pour savoir si une composante connexe par le haut $cp$, de ligne $L_{cp}=\alpha_{i_{1}}\alpha_{i_{1}+1}...\alpha_{\mathcal{L}+i_{1}}$, de $e$ et $cp'$ , de ligne $L_{cp'}=\alpha'_{i'_{1}}\alpha'_{i'_{1}+1}...\alpha'_{\mathcal{L}'+i'_{1}}$ , de $e'$ se touchent il faut et il suffit que 
+\begin{eqnarray*}\label{condcontact1}
+\sum_{i'_{1}\leq i\leq \mathcal{L}'+i'_{1}}\alpha_{i}\alpha'_{i}>0,
+\end{eqnarray*}
+avec $i_{1}\leq i'_{1}\leq \mathcal{L}\leq \mathcal{L}'\leq B.$ 
+
+\section{Automate $A_{F3}$}
+\begin{spacing}{0.30}
+\subsection{États}
+\end{spacing}
+Nous présentons dans cette section l'automate $\mathcal{A}_{F3}$ en guise d'exemple des automates $\mathcal{A}_{FB}$. Le cas $B=2$ n'a pas été abordé parce qu'une forêt de polyominos inscrite dans un rectangle de largeur $2$ n'est pas si pertinente comme exemple de forêt de polyominos.
+
+À part les états vides, les états de $A_{F3}$  sont les mêmes que ceux de $A_{3}$ de même que ses états initiaux. On a donc 
+\begin{eqnarray*}
+& & e_{1}=(100,000,{{0}}),\quad e_{2}  = (100,100,\{\{0\}\}),\\
+& & e_{3}  = (010,000,\{\{0\}\}),\quad e_{4}  =  (010,010,\{\{0\}\}),\\
+& & e_{5}  =  (001,000,\{\{0\}\}),\quad e_{6}  = (001,001,\{\{0\}\}),\\
+& & e_{7}  = (110,110,\{\{0\}\}), \quad e_{8}  = (110,210,\{\{0\}\}),\\
+& & e_{9}  =  (110,120,\{\{0\}\}), \quad e_{10}  = (110,220,\{\{0\}\}),\\
+& & e_{11} = (101,000,\{\{0\},\{1\}\}),\quad e_{12}  = (101,101,\{\{0\},\{1\}\},\\
+& & e_{13} = (101,100,\{\{0\},\{1\}\}),\quad e_{14}=(101,001,\{\{0\},\{1\}\}),\\
+& & e_{15}  = (101,101,\{\{0,1\}\}),\quad e_{16}  = (011,011,\{\{0\}\}),\\
+& & e_{17}  = (011,021,\{\{0\}\}),\quad e_{18}  = (011,012,\{\{0\}\}),\\
+& & e_{19}  =  (011,022,\{\{0\}\}),\quad e_{20}  = (111,121,\{\{0\}\}),\\
+& & e_{21}  =  (111,221,\{\{0\}\}),\quad e_{22}  = (111,122,\{\{0\}\}),\\
+& & e_{23}  =  (111,222,\{\{0\}\}),\quad e_{24}  = (111,131,\{\{0\}\}),\\
+& & e_{25}  =  (111,231,\{\{0\}\}), \quad e_{26}  = (111,132,\{\{0\}\}),\\
+& & e_{27}  =  (111,232,\{\{0\}\}),\quad e_{28}=(000,000,\{\{ \}\}),\\
+& &  e_{30}= (10,10,\{\{0\}\}),\quad e_{32}= (01,01,\{\{0\}\}), \\
+& & e_{34}= (11,21,\{\{0\}\}),\quad e_{35}= (11,12,\{\{0\}\}),\quad  e_{36}= (11,22,\{\{0\}\}),\\
+& & e_{37}=(00,00,\{\{ \}\}),\quad e_{39}=(1,1,\{\{0\}\}),\quad e_{40}=(0,0,\{\{ \}\}),\\
+& & e_{29}= (10,00,\{\{0\}\}),\quad e_{31}= (01,00,\{\{0\}\}),\\
+& & e_{33}= (11,11,\{\{0\}\}),\quad e_{38}=(1,0,\{\{0\}\}).
+ \end{eqnarray*}
+ avec les états initiaux   $e_{1}, e_{3}, e_{5}, e_{7}, e_{11}, e_{16}, e_{20}.$  Tous les états non vides ayant des cellules à leurs extrémités sont finaux.
+ \begin{spacing}{0.30}
+ \subsection{Matrice de transitions}
+ \end{spacing}
+ La matrice de transition $\mathcal{M}_{F3}$ de $\mathcal{A}_{F3}$ est plus dense que la matrice $\mathcal{M}_{3}$. Cela s'explique par le fait
+que plusieurs transitions entre états auparavant impossibles dans le cas des polyominos  sont  possibles au niveau des forêts de polyominos.
+ 
+ 
+ Nous avons utilisé un programme C++ pour calculer la matrice $\mathcal{M}_{F3}$ et l'intégralité de la matrice $\mathcal{M}_{3}$ dont les résultats sont présentés en annexe. Toujours dans la même annexe, nous avons présenté quelques résultats sur les  polyominos inscrits dans le rectangle $R_{3,4}$ en nous servant de la bibliothèque Ginac.
+ \begin{spacing}{0.30}
+\section{Calcul du nombre de forêts de polyominos inscrites dans un rectangle de base $3$ et de hauteur $h=n+1$ pour quelques valeurs de $n$. }
+\end{spacing}
+Pour chaque état initial $e_{i}$ de $\mathcal{A}_{F3}$, nous calculons le nombre $s_{i}$ de toutes les forêts de polyominos partant de cet état vers un état final. Nous désignons par $S_{n}$ le nombre total de forêts de polyominos inscrites dans le rectangle $3\times (n+1)$. Pour $n=0$  nous avons les forêts de polyominos de la figure \ref{uniF3}.
+ 
+\begin{figure}[!htb]
+ \begin{minipage}[c]{.26\linewidth}
+  \centering
+  \end{minipage}
+  \hfill
+  \begin{minipage}[c]{.36\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=1,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{1}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.36\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=1,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{1}
+\fillcell{2}{1}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\caption{\label{uniF3} Forêts de polyominos inscrites dans le rectangle $3\times 1$.}
+\end{figure} 
+ Nous présentons le reste des résultats dans le tableau \ref{v4}.
+\begin{tiny}
+\begin{longtable}{|c|c|c|c|c|c|c|c|c|c|c|} 
+\hline
+n&$s_{1}$&$s_{3}$&$s_{5}$&$s_{7}$&$s_{11}$&$s_{16}$&$s_{20}$&$S_{n}$\\
+\hline
+$1$&4
+ & 2
+& 4& 4
+& 7
+&4
+ & 7&32\\
+\hline
+$2$&
+42 &34
+ &42
+ &42
+ & 52 &42 & 52 &306\\
+\hline
+$3$& 372 
+& 340
+ &372 
+ & 372 
+& 408
+& 372 
+&408
+ &2644
+\\
+\hline
+$4$&  3112
+& 2984
+
+ & 3112
+
+ & 3112
+& 3248
+
+& 3112
+
+& 3248
+
+ &  21928
+
+\\
+\hline
+$5$&  
+25424
+& 24912
+&25424
+& 25424
+& 25952
+&25424
+& 25952
+&  178512
+\\
+\hline
+$6$
+& 205472
+& 203424
+&205472
+& 205472
+& 207552
+& 205472
+& 207552
+& 1.44042e+06
+\\
+\hline
+\caption{\label{v4} Nombres de forêts de polyominos inscrites dans quelques rectangles de type $3$.}
+\end{longtable}
+\end{tiny} 
+ 
+Pour le cas $n=1$, nous représentons, ci-dessous, les $32$ figures correspondantes. La représentation de ces figures nous permet de valider le terme $S_{1}$  de la suite  $(S_{n})$ des nombres de forêts de polyominos inscrites dans un rectangle de largeur $3$ et de hauteur $n+1$. 
+
+ 
+\begin{figure}[!htb]
+ \begin{minipage}[c]{.26\linewidth}
+  \centering
+  \end{minipage}
+  \hfill
+  \begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{2}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{2}
+\fillcell{1}{1}
+\fillcell{2}{1}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{2}
+\fillcell{2}{1}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{2}
+\fillcell{1}{1}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\caption{\label{S1} Forêts de polyominos inscrites dans le rectangle $3\times 2$ partant de l'état $(100,000,\{\{0\}\})$.}
+\end{figure} 
+
+\begin{figure}[!htb]
+ \begin{minipage}[c]{.26\linewidth}
+  \centering
+  \end{minipage}
+  \hfill
+\begin{minipage}[c]{.36\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{2}{2}
+\fillcell{1}{1}
+\fillcell{2}{1}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.36\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{2}{2}
+\fillcell{1}{1}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\caption{\label{S3} Forêts de polyominos inscrites dans le rectangle $3\times 2$ partant de l'état $(010,000,\{\{0\}\})$.}
+\end{figure} 
+\begin{figure}[!htb]
+ \begin{minipage}[c]{.26\linewidth}
+  \centering
+  \end{minipage}
+  \hfill
+  \begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{3}{2}
+\fillcell{1}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{3}{2}
+\fillcell{1}{1}
+\fillcell{2}{1}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{3}{2}
+\fillcell{2}{1}
+\fillcell{1}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{3}{2}
+\fillcell{1}{1}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\caption{\label{S5} Forêts de polyominos inscrites dans le rectangle $3\times 2$ partant de l'état $(001,000,\{\{0\}\})$.}
+\end{figure} 
+\begin{figure}[!htb]
+ \begin{minipage}[c]{.26\linewidth}
+  \centering
+  \end{minipage}
+  \hfill
+  \begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{2}
+\fillcell{2}{2}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{2}
+\fillcell{2}{2}
+\fillcell{2}{1}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{2}
+\fillcell{2}{2}
+\fillcell{3}{1}
+\fillcell{1}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{2}
+\fillcell{2}{2}
+\fillcell{1}{1}
+\fillcell{2}{1}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\caption{\label{S7} Forêts de polyominos inscrites dans le rectangle $3\times 2$ partant de l'état $(110,110,\{\{0\}\})$.}
+\end{figure} 
+\begin{figure}[!htb]
+
+ \begin{minipage}[c]{.26\linewidth}
+  \centering
+  \end{minipage}
+  \hfill
+  \begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{2}
+\fillcell{3}{2}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{2}
+\fillcell{3}{2}
+\fillcell{2}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{2}
+\fillcell{3}{2}
+\fillcell{1}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{2}
+\fillcell{3}{2}
+\fillcell{1}{1}
+\fillcell{2}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}\\\\\
+ \begin{minipage}[c]{.26\linewidth}
+  \centering
+  \end{minipage}
+  \hfill
+  \begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{2}
+\fillcell{3}{2}
+\fillcell{1}{1}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.20\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{2}
+\fillcell{3}{2}
+\fillcell{2}{1}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.28\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{2}
+\fillcell{3}{2}
+\fillcell{3}{1}
+\fillcell{1}{1}
+\fillcell{2}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.16\linewidth}
+  \centering
+  \end{minipage}
+\caption{\label{S11} Forêts de polyominos inscrites dans le rectangle $3\times 2$ partant de l'état $(101,000,\{\{0\},\{1\}\})$.}
+\end{figure} 
+
+ %---------------------------------------------------------
+\begin{figure}[!htb]
+ \begin{minipage}[c]{.26\linewidth}
+  \centering
+  \end{minipage}
+  \hfill
+  \begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{3}{2}
+\fillcell{2}{2}
+\fillcell{1}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{3}{2}
+\fillcell{2}{2}
+\fillcell{2}{1}
+\fillcell{1}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{3}{2}
+\fillcell{2}{2}
+\fillcell{3}{1}
+\fillcell{1}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{3}{2}
+\fillcell{2}{2}
+\fillcell{1}{1}
+\fillcell{2}{1}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\caption{\label{S16} Forêts de polyominos inscrites dans le rectangle $3\times 2$ partant de l'état $(011,011,\{\{0\}\})$.}
+\end{figure} 
+\begin{figure}[!htb]
+
+ \begin{minipage}[c]{.26\linewidth}
+  \centering
+  \end{minipage}
+  \hfill
+  \begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{2}
+\fillcell{2}{2}
+\fillcell{3}{2}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{2}
+\fillcell{2}{2}
+\fillcell{3}{2}
+\fillcell{2}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{2}
+\fillcell{2}{2}
+\fillcell{3}{2}
+\fillcell{1}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{2}
+\fillcell{2}{2}
+\fillcell{3}{2}
+\fillcell{1}{1}
+\fillcell{2}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}\\\\\
+ \begin{minipage}[c]{.26\linewidth}
+  \centering
+  \end{minipage}
+  \hfill
+  \begin{minipage}[c]{.16\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{2}
+\fillcell{2}{2}
+\fillcell{3}{2}
+\fillcell{1}{1}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.20\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{2}
+\fillcell{2}{2}
+\fillcell{3}{2}
+\fillcell{2}{1}
+\fillcell{3}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.28\linewidth}
+  \centering
+\begin{logicpuzzle}[rows=2,columns=3,color=cyan!100, width=750px,scale=0.5]
+\fillcell{1}{2}
+\fillcell{2}{2}
+\fillcell{3}{2}
+\fillcell{3}{1}
+\fillcell{1}{1}
+\fillcell{2}{1}
+\framepuzzle[black!50]
+\end{logicpuzzle}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.16\linewidth}
+  \centering
+  \end{minipage}
+\caption{\label{S20} Forêts de polyominos inscrites dans le rectangle $3\times 2$ partant de l'état $(111,121,\{\{0\},\{1\}\})$.}
+\end{figure}  
+\newpage
+
+Les éléments de la figure \ref{uniF3} d'une part et ceux de \ref{S1}, \ref{S3}, \ref{S5}, \ref{S7}, \ref{S11}, \ref{S16} et \ref{S20} d'autre part confirment que les termes $S_{0}$ et $S_{1}$ de la suite $(S_{n})$ sont respectivement $2$ et $32$. Pour l'instant il n'y a aucune suite de l'\emph{OEIS} commençant par les termes $2$, $32$, $2644$, pour confirmer l'intégralité de la suite $(S_{n})$.
+
+\section{Séries génératrices de l'automate $\mathcal{A}_{F3}$}
+Tout comme dans la dernière  section du chapitre précédent  nous validons la matrice $\mathcal{M}_{F3}$ en déterminant sa fonction rationnelle. Le développement de cette dernière en série de Taylor nous permet de découvrir beaucoup de termes de la suite $(S_{n})$.
+
+En notant par $s_{i}(x)$ la fonction génératrice des polyominos partant de l'état initial $e_{i}$, $i\in \{1, 3, 5, 7, 11, 16, 20\}$, à un état final de l'automate $\mathcal{A}_{F3}$ nous avons
+\begin{eqnarray*}
+s_1(x)& = & \dfrac{2x(-4x^{2} + 7x - 2)}{(64x^{3} - 56x^{2} + 14x - 1)}\\
+& &\\
+s_3(x)& = & \dfrac{2x(12x^{2} - 3x - 1)}{(64x^{3} - 56x^{2} + 14x - 1)}\\
+& &\\
+s_5(x)& = & \dfrac{2x(-4x^{2} + 7x - 2)}{(64x^{3} - 56x^{2} + 14x - 1)}\\
+& &\\
+s_7(x)& = & \dfrac{2x(-4x^{2} + 7x - 2)}{(64x^{3} - 56x^{2} + 14x - 1)}\\
+& &\\
+s_{11}(x) & = & \dfrac{(-2x^{2} - 3x + 1)}{(16x^{2} - 10x + 1)}\\
+& &\\
+s_{16}(x) & = & \dfrac{2x(-4x^{2} + 7x - 2)}{(64x^{3} - 56x^{2} + 14x - 1)}\\
+& &\\
+s_{20}(x) & = & \dfrac{(-2x^{2} - 3x + 1)}{(16x^{2} - 10x + 1)}.
+\end{eqnarray*}
+En sommant les $s_{i}(x)$,  $i\in \{1, 3, 5, 7, 11, 16, 20\}$, nous obtenons la fonction rationnelle $F_{F3}(x)$ de $\mathcal{A}_{F3}$ définie par
+\begin{eqnarray*}
+F_{F3}(x) & = & \dfrac{2(-12x^{3} + 15x^{2} - 2x - 1)}{(64x^{3} - 56x^{2} + 14x - 1)}
+\end{eqnarray*}
+dont la série de Taylor à l'ordre $20$ au voisinage de $0$ est 
+ \begin{eqnarray*}
+& & 2+32x+306x^{2}+2644x^{3}+21928x^{4}+178512x^{5}+\\
+& & 1440416x^{6}+11572544x^{7}+92777088x^{8}+743003392x^{9}+\\
+ & & 5947173376x^{10}+47589970944x^{11}+380770101248x^{12}+\\
+ & & 3046362140672x^{13}+24371702439936x^{14}+194976840761344x^{15}+\\
+ & & 1559827611025408x^{16}+12478672427876352x^{17}+\\
+ & & 99829585581572096x^{18}+798637509286559744x^{19}+\\
+ & & 6389103372827885568x^{20}+O(x^{21}).
+ \end{eqnarray*}
+
+
+
+ Mais néanmoins l'exactitude de la matrice $\mathcal{M}_{F3}$ générée grâce à notre programme $C++$, la fonction rationnelle $F_{F3}$ ainsi que la série de Taylor associée  et surtout grâce à plusieurs outils de calculs implémentés au cours de ce travail, nous garantissons l'exactitude de la suite $(S_{n})$. De plus nous prévoyons une soumission de cette suite à l'\emph{OEIS} pour une étude minutieuse afin quelle soit rendue publique.
+
+ 
+ 
+ L'automate $\mathcal{A}_{FB}$ tout comme l'automate $\mathcal{A}_{B}$ présentent un intérêt particulier dans l'énumération des polyominos et forêts de polyominos inscrits dans les rectangles du type $B$. En considérant le sous-ensemble des forêts de polyominos inscrits à une seule composante connexe, nous retrouvons les résultats dans le cas de l’automate $\mathcal{A}_{B}$. Nous concluons en disant  que $\mathcal{A}_{FB}$  généralise $\mathcal{A}_{B}.$ Comme cela a été le cas dans le chapitre précédent, la proposition \ref{inscr1} joue un rôle capital sur  l'inscriptibilité de toute forêt de polyminos partant d'un état initial à un état final et dont les transitions satisfont  aux règles associées à cette proposition.
+ 
+ 
+ Le volet abordé dans ce chapitre est  une généralisation du chapitre précédent. Nous avons donné les règles de construction de l'automate $\mathcal{A}_{FB}$ nécessaire pour l'énumération de toutes les forêts de polyominos inscrites dans tous les rectangles de largeur $B$ et de hauteur quelconque en fonction de leur aire, leur périmètre, leur hauteur, leur nombre de feuilles et leur nombre de composantes connexes.
