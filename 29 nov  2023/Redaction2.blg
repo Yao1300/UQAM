@@ -10,53 +10,62 @@ A level-1 auxiliary file: Automatum.aux
 A level-1 auxiliary file: AutomatumF.aux
 A level-1 auxiliary file: Aspects_algorithimiques.aux
 A level-1 auxiliary file: Conclusion_et_perspectives.aux
-A level-1 auxiliary file: nom_de_fichier_d_une_annexe.aux
 The style file: apalike-uqam.bst
 Database file #1: Bibi.bib
+I was expecting a `,' or a `}'---line 301 of file Bibi.bib
+ : 
+ : Url = {https://github.com/Yao1300/UQAM/tree/main/Annexe},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 308 of file Bibi.bib
+ : 
+ : Url = {https://github.com/Yao1300/UQAM/tree/main/code_memoire2},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 Warning--empty year in Oeis2
 Warning--there is url but no urldate in Oeis2
 Warning--empty year in Oeis
 Warning--there is url but no urldate in Oeis
 Warning--there's a number but no series in Auto1
-You've used 26 entries,
+You've used 28 entries,
             2552 wiz_defined-function locations,
-            774 strings with 7815 characters,
-and the built_in function-call counts, 10752 in all, are:
-= -- 1074
-> -- 272
-< -- 26
-+ -- 93
-- -- 88
-* -- 852
-:= -- 1722
-add.period$ -- 83
-call.type$ -- 26
-change.case$ -- 171
-chr.to.int$ -- 25
-cite$ -- 31
-duplicate$ -- 487
-empty$ -- 979
-format.name$ -- 134
-if$ -- 2246
-int.to.chr$ -- 2
+            781 strings with 7825 characters,
+and the built_in function-call counts, 11219 in all, are:
+= -- 1110
+> -- 286
+< -- 27
++ -- 98
+- -- 92
+* -- 879
+:= -- 1814
+add.period$ -- 91
+call.type$ -- 28
+change.case$ -- 181
+chr.to.int$ -- 26
+cite$ -- 33
+duplicate$ -- 513
+empty$ -- 1029
+format.name$ -- 140
+if$ -- 2336
+int.to.chr$ -- 3
 int.to.str$ -- 0
-missing$ -- 30
-newline$ -- 135
-num.names$ -- 78
-pop$ -- 206
+missing$ -- 34
+newline$ -- 145
+num.names$ -- 84
+pop$ -- 225
 preamble$ -- 1
-purify$ -- 174
+purify$ -- 186
 quote$ -- 0
-skip$ -- 323
+skip$ -- 336
 stack$ -- 0
 substring$ -- 834
-swap$ -- 69
-text.length$ -- 4
+swap$ -- 65
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 148
+type$ -- 156
 warning$ -- 5
-while$ -- 92
+while$ -- 93
 width$ -- 0
-write$ -- 342
-(There were 5 warnings)
+write$ -- 366
+(There were 2 error messages)

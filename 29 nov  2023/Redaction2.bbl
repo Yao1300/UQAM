@@ -1,10 +1,5 @@
 \begin{thebibliography}{}
 
-\bibitem[Amarni, 2015]{Amt}
-Amarni, A. (2015).
-\newblock Compression guidée par automate et noyaux rationnels.
-\newblock {\em Hal Open Science},  13--20.
-
 \bibitem[Bousquet-Mélou, 1993]{Bos1}
 Bousquet-Mélou, M. (1993).
 \newblock q-Énumération de polyominos convexes*.
@@ -37,6 +32,11 @@ Derrida, B., Nadal, J.-P. et Vannimenus, J. (1982).
 \newblock Directed lattices animals in 2 dimensions: Numerical and exact
   results.
 \newblock {\em J. Phys.}, {\em 43}, 1561.
+
+\bibitem[Eilenberg, 1976]{Amt}
+Eilenberg, S. (1976).
+\newblock Automata, languages, and machines.
+\newblock {\em Academic Press}, {\em A}.
 
 \bibitem[Friedman, a]{Oeis2}
 Friedman, E.
@@ -140,5 +140,15 @@ Sipser, M. (1996).
 Viennot, G.-X. (1985).
 \newblock Problèmes combinatoires posés par la physique statistique.
 \newblock {\em Séminaire Bourbaki}, {\em 1983/84}(626), 225--246.
+
+\bibitem[Yao, 2023a]{Annexe}
+Yao, I.~A. (2023a).
+\newblock {\em Annexe}.
+\newblock Github.
+
+\bibitem[Yao, 2023b]{Code}
+Yao, I.~A. (2023b).
+\newblock {\em Programmes informatiques}.
+\newblock Github.
 
 \end{thebibliography}
